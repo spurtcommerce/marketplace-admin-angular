@@ -1,0 +1,296 @@
+<div class="verify-content">
+    <div class="verify-header d-none">
+        <div class="verify-header-lft">
+            <!-- <h3>{{listvalue?.companyName}}</h3> -->
+            <!-- <div class="verify-header-row flex">
+                <div class="verify-header-lft-row flex">
+                    <div class="title-align">
+                        <p>{{'marketplace.seller.Industry'| translate}}</p> <span>:</span> <span>
+                            {{listvalue?.industryName ? listvalue?.industryName : '-'}} </span>
+                        <p>{{'marketplace.seller.Country'| translate}}</p> <span>:</span> <span> {{country}} </span>
+                        <p>{{'marketplace.seller.ReceivedOn'| translate}}</p> <span>:</span> <span>
+                            {{listvalue?.createdDate | dynamicDate:'dd/MM/yyyy'}} </span>
+                    </div>
+                </div>
+                <div class="verify-header-lft-row flex">
+                    <div class="title-align">
+                        <p>{{'marketplace.seller.FirstName'| translate}}</p> <span>:</span> <span>
+                            {{listvalue.customerDetail?.firstName}} </span>
+                        <p>
+                            {{'marketplace.seller.LastName'| translate}} </p> <span>:</span> <span>
+                            {{listvalue?.customerDetail?.lastName ? listvalue?.customerDetail?.lastName : '-'}}
+                        </span>
+                        <p>
+                            {{'marketplace.seller.DOB'| translate}} </p> <span>:</span>
+                        <span> {{listvalue?.customerDetail?.dob ? (listvalue?.customerDetail?.dob |
+                            dynamicDate:'MM/dd/yyyy') : '-'}} </span>
+                    </div>
+                </div>
+                <div class="verify-header-lft-row flex">
+                    <div class="title-align">
+                        <p >
+                            {{'marketplace.seller.Gender'| translate}}</p> <span>:</span> <span>
+                            {{listvalue?.customerDetail?.gender ? listvalue?.customerDetail?.gender : '-'}} </span>
+
+                        <p>{{'marketplace.seller.Email'| translate}}</p> <span>:</span> <span>
+                            {{listvalue?.customerDetail?.email ? listvalue?.customerDetail?.email : '-'}} </span>
+                        <p>{{'marketplace.seller.Mobile'| translate}}</p> <span>:</span> <span>
+                            {{listvalue?.customerDetail?.mobileNumber ? listvalue?.customerDetail?.mobileNumber : '-'}} </span>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </div>
+
+    <div class="flex addproduct-wrap">
+        <div class="card ap-general">
+            <div class="ap-header sub-sub-header">
+                <h3 class="verify-reject">
+                    {{'marketplace.seller.CompanyDetails'| translate}}
+                    <span *ngIf="companyVerify == 1"> <img src="assets/imgs/check-green-round.svg" alt=""> Verified
+                    </span>
+                    <!-- <span *ngIf="companyVerify == 0"> <img src="assets/imgs/check-grey-round.svg" alt=""> Pending
+                    </span> -->
+                    <!-- <button  *ngIf="companyVerify !== 1" class="button-reg btn-sm secondary" (click)="verifySingle()"
+                        [disabled]="companyVerify">
+                       
+                        {{'marketplace.seller.Verify'| translate}}
+                    </button> -->
+
+                </h3>
+                <div>
+                    <p>{{'marketplace.seller.companyInformation'| translate}}</p>
+                </div>
+            </div>
+
+            <!-- loader -->
+            <div class="spinner-wrapper">
+                <app-global-loader [isShow]="(sandbox.companyVerifyListLoading$  | async)"
+                    style="transform: translate(38%, 50%);position:absolute; z-index: 3;">
+                </app-global-loader>
+            </div>
+
+            <div class="ap-body">
+                <div class="ap-form-row">
+
+                    <div class="ap-body-col">
+                        <div class="form-group">
+                            <app-common-form [type]="dynamicControls[0].type" [label]="dynamicControls[0].label"
+                                [control]="dynamicControls[0]?.control" [submitted]="submitted"
+                                [customData]="dynamicControls[0]?.customData"
+                                [isDisabled]="dynamicControls[0]?.isDisabled"
+                                [mandatory]="dynamicControls[0]?.mandatory">
+                            </app-common-form>
+                        </div>
+                    </div>
+
+                    <div class="ap-body-col">
+                        <div class="form-group">
+                            <app-common-form [type]="dynamicControls[1].type" [label]="dynamicControls[1].label"
+                                [control]="dynamicControls[1]?.control" [submitted]="submitted"
+                                [customData]="dynamicControls[1]?.customData"
+                                [isDisabled]="dynamicControls[0]?.isDisabled"
+                                [mandatory]="dynamicControls[1]?.mandatory"></app-common-form>
+                        </div>
+                    </div>
+
+                    <div class="ap-body-col">
+                        <div class="form-group">
+                            <app-common-form [type]="dynamicControls[2].type" [label]="dynamicControls[2].label"
+                                [control]="dynamicControls[2]?.control" [submitted]="submitted"
+                                [customData]="dynamicControls[2]?.customData"
+                                [isDisabled]="dynamicControls[2]?.isDisabled"
+                                [mandatory]="dynamicControls[2]?.mandatory">
+                            </app-common-form>
+                        </div>
+                    </div>
+                    <div class="ap-body-col">
+                        <div class="form-group">
+                            <app-common-form [type]="dynamicControls[3].type" [label]="dynamicControls[3].label"
+                                [control]="dynamicControls[3]?.control" [submitted]="submitted"
+                                [customData]="dynamicControls[3]?.customData"
+                                [isDisabled]="dynamicControls[3]?.isDisabled"
+                                [mandatory]="dynamicControls[3]?.mandatory">
+                            </app-common-form>
+                        </div>
+                    </div>
+
+                    <div class="ap-body-col">
+                        <div class="form-group">
+                            <app-common-form [type]="dynamicControls[4].type" [label]="dynamicControls[4].label"
+                                [control]="dynamicControls[4]?.control" [submitted]="submitted"
+                                [customData]="dynamicControls[4]?.customData"
+                                [isDisabled]="dynamicControls[4]?.isDisabled"
+                                [mandatory]="dynamicControls[4]?.mandatory"></app-common-form>
+                        </div>
+                    </div>
+                    <div class="ap-body-col">
+                        <div class="form-group">
+                            <app-common-form [type]="dynamicControls[5].type" [label]="dynamicControls[5].label"
+                                [control]="dynamicControls[5]?.control" [submitted]="submitted"
+                                [label]="dynamicControls[5]?.label" [customData]="dynamicControls[5]?.customData"
+                                [isDisabled]="dynamicControls[0]?.isDisabled"></app-common-form>
+                        </div>
+                    </div>
+                    <div class="ap-body-col">
+                        <div class="form-group">
+                            <app-common-form [type]="dynamicControls[6].type" [label]="dynamicControls[6].label"
+                                [control]="dynamicControls[6]?.control" [submitted]="submitted"
+                                [customData]="dynamicControls[6]?.customData"
+                                [isDisabled]="dynamicControls[6]?.isDisabled"
+                                [mandatory]="dynamicControls[6]?.mandatory"></app-common-form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card ap-general">
+            <div class="ap-header sub-sub-header">
+                <h3 class="verify-reject">{{'marketplace.seller.Business Address'| translate}}
+                    <!-- <span class="rejected"> <img src="assets/imgs/close-red-round.svg" alt=""> Rejected </span> -->
+                </h3>
+                <p> {{'marketplace.seller.businessAddressInfo'| translate}}
+                </p>
+            </div>
+
+            <div class="ap-body">
+                <div class="ap-form-row">
+
+                    <div class="ap-body-col">
+                        <div class="form-group">
+                            <app-common-form [type]="dynamicControls[8].type" [label]="dynamicControls[8].label"
+                                [control]="dynamicControls[8]?.control" [submitted]="submitted"
+                                [customData]="dynamicControls[8]?.customData"
+                                [isDisabled]="dynamicControls[8]?.isDisabled"
+                                [mandatory]="dynamicControls[8]?.mandatory"></app-common-form>
+                        </div>
+                    </div>
+                    <div class="ap-body-col">
+                        <div class="form-group">
+                            <app-common-form [type]="dynamicControls[9].type" [label]="dynamicControls[9].label"
+                                [control]="dynamicControls[9]?.control" [submitted]="submitted"
+                                [customData]="dynamicControls[9]?.customData"
+                                [isDisabled]="dynamicControls[9]?.isDisabled"
+                                [mandatory]="dynamicControls[9]?.mandatory"></app-common-form>
+                        </div>
+                    </div>
+                    <div class="ap-body-col">
+                        <div class="form-group">
+                            <app-common-form [type]="dynamicControls[10].type" [label]="dynamicControls[10].label"
+                                [control]="dynamicControls[10]?.control" [submitted]="submitted"
+                                [customData]="dynamicControls[10]?.customData"
+                                [isDisabled]="dynamicControls[10]?.isDisabled"></app-common-form>
+                        </div>
+                    </div>
+                    <div class="ap-body-col">
+                        <div class="form-group">
+                            <app-common-form [type]="dynamicControls[11].type" [label]="dynamicControls[11].label"
+                                [control]="dynamicControls[11]?.control" [submitted]="submitted"
+                                [customData]="dynamicControls[11]?.customData"
+                                [isDisabled]="dynamicControls[11]?.isDisabled"></app-common-form>
+                        </div>
+                    </div>
+                    <div class="ap-body-col">
+                        <div class="form-group">
+                            <app-common-form [type]="dynamicControls[12].type" [label]="dynamicControls[12].label"
+                                [control]="dynamicControls[12]?.control" [submitted]="submitted"
+                                [customData]="dynamicControls[12]?.customData"
+                                [isDisabled]="dynamicControls[12]?.isDisabled"
+                                [mandatory]="dynamicControls[12]?.mandatory"></app-common-form>
+                        </div>
+                    </div>
+                    <div class="ap-body-col">
+                        <div class="form-group">
+                            <app-common-form [type]="dynamicControls[13].type" [label]="dynamicControls[13].label"
+                                [control]="dynamicControls[13]?.control" [submitted]="submitted"
+                                [customData]="dynamicControls[13]?.customData"
+                                [isDisabled]="dynamicControls[13]?.isDisabled"
+                                [mandatory]="dynamicControls[13]?.mandatory"></app-common-form>
+                        </div>
+                    </div>
+                    <div class="ap-body-col">
+                        <div class="form-group">
+                            <app-common-form [type]="dynamicControls[14].type" [label]="dynamicControls[14].label"
+                                [control]="dynamicControls[14]?.control" [submitted]="submitted"
+                                [customData]="dynamicControls[14]?.customData"
+                                [isDisabled]="dynamicControls[14]?.isDisabled"
+                                [mandatory]="dynamicControls[14]?.mandatory"></app-common-form>
+                        </div>
+                    </div>
+                </div>
+                <div class="ap-body-col">
+                    <div class="form-group">
+                        <app-common-form [type]="dynamicControls[15].type" [label]="dynamicControls[15].label"
+                            [control]="dynamicControls[15]?.control" [submitted]="submitted"
+                            [customData]="dynamicControls[15]?.customData"
+                            [isDisabled]="dynamicControls[0]?.isDisabled"></app-common-form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card ap-general">
+            <div class="ap-header sub-sub-header">
+                <h3>{{'marketplace.seller.TaxDetails'| translate}}
+                    <span tooltip="Tax Details" flow="right">
+                        <img src='assets/imgs/info.svg'>
+                    </span>
+                </h3>
+                <p>{{'marketplace.seller.taxInformation'| translate}} </p>
+            </div>
+
+            <div class="ap-body">
+                <div class="ap-form-row">
+                    <div class="ap-body-col">
+                        <div class="form-group">
+                            <app-common-form [type]="dynamicControls[16].type" [label]="dynamicControls[16].label"
+                                [control]="dynamicControls[16]?.control" [submitted]="submitted"
+                                [customData]="dynamicControls[16]?.customData"
+                                [isDisabled]="dynamicControls[0]?.isDisabled"></app-common-form>
+                        </div>
+                    </div>
+                    <div class="ap-body-col">
+                        <div class="form-group">
+                            <app-common-form [type]="dynamicControls[17].type" [label]="dynamicControls[17].label"
+                                [control]="dynamicControls[17]?.control" [submitted]="submitted"
+                                [customData]="dynamicControls[17]?.customData"
+                                [isDisabled]="dynamicControls[0]?.isDisabled"></app-common-form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="save-btns verify-save-btns flex">
+    <!-- <button class="cancel prev">Previous</button> -->
+    <ng-template #iop>
+        <button class="cancel">
+            <img style="height:30px" src="./assets/loader/Spurt-commerce-Loader-2.1.gif" />
+        </button>
+    </ng-template>
+    <button class="button-reg btn-lg notes" (click)="opencommentlog()">
+        <img src="assets/imgs/notes.svg" alt="">
+        {{'marketplace.seller.Comments'| translate}}
+    </button>
+    <!-- [disabled]="companyVerify" -->
+    <div class="dropdown" [ngClass]="{handsymbolRemove: companyVerify}">
+        <button class="button-reg btn-lg  dropdown-toggle" type="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            <ng-container *ngIf="statusName==1;else nid">
+                Verified
+            </ng-container>
+            <ng-template #nid>
+                Pending
+            </ng-template> <img src="assets/imgs/caret-down.svg" alt="">
+        </button>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="javascript:void(0)" (click)="verifySingle(1)">{{'marketplace.seller.Verify' | translate}}</a></li>
+            <li><a class="dropdown-item" href="javascript:void(0)" (click)="verifySingle(0)">Pending</a></li>
+        </ul>
+    </div>
+    <button class="button-reg btn-lg primary" (click)="next()">
+        {{'marketplace.seller.Next' | translate}}
+    </button>
+</div>

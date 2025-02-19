@@ -1,0 +1,85 @@
+<div class="setup-wrapper">
+
+    <div class="breadcrumbs-row">
+        <div class="bc-col mar">
+            <ul>
+                <li class="cusror"><a href="javascript:void(0)" style="color: gray">
+                        {{'Settings.nav.Settings'|translate}} </a></li>
+                <li>{{'Settings.nav.SettingsHome'|translate}}</li>
+            </ul>
+        </div>
+    </div> 
+    
+    <div class="settings-container">
+
+        <div class="settings-wrap flex">
+            <div class="settings-col" [routerLink]="['/settings/multiple-websites']"
+            appShowHide  [hideUnAuthorized]="settingPermissionConfig.storeSetting">
+                <a href="javascript:void(0)">
+                    <h3> <img src="assets/img/store.svg">{{'Additional.Multiple websites'|translate}}</h3>
+                    <p>{{'Settings.nav.AdminCreate'|translate}}</p>
+                </a>
+            </div>
+
+            <div class="settings-col" [routerLink]="['/settings/local']"
+            appShowHide [multipleHideUnAuthorized]="settingPermissionConfig.localization">
+                <a href="javascript:void(0)">
+                    <h3> <img src="assets/img/localization.svg"> {{'Settings.nav.Localization'|translate}} </h3>
+                    <p>{{'Settings.nav.LocalizationAdaptation'|translate}}</p>
+                </a>
+            </div>
+
+            <div class="settings-col" [routerLink]="['/settings/access-and-permission']"
+            appShowHide [multipleHideUnAuthorized]="settingPermissionConfig.accessPermission">
+                <a href="javascript:void(0)">
+                    <h3> <img src="assets/img/permission.svg"> {{'Settings.nav.Accessandpermission'|translate}} </h3>
+                    <p>{{'Settings.nav.AdminSection'|translate}}</p>
+                </a>
+            </div>
+
+            <div class="settings-col" [routerLink]="['/settings/sitesettings']"
+            appShowHide  [multipleHideUnAuthorized]="settingPermissionConfig.system">
+                <a href="javascript:void(0)">
+                    <h3> <img src="assets/img/system.svg"> {{'Settings.nav.System'|translate}} </h3>
+                    <p>{{'Settings.nav.Adminsheader'|translate}}</p>
+                </a>
+            </div>
+
+            <div class="settings-col" [routerLink]="['/settings/personalize']"
+            appShowHide [multipleHideUnAuthorized]="settingPermissionConfig.personalize">
+                <a href="javascript:void(0)">
+                    <h3> <img src="assets/img/personalize.svg"> {{'Settings.nav.Personalize' | translate}} </h3>
+                    <p>{{'Settings.nav.AdminConfigure'|translate}}</p>
+                </a>
+            </div>
+            <div class="settings-col" [routerLink]="['/settings/site-settings']"
+            appShowHide [multipleHideUnAuthorized]="settingPermissionConfig.seo">
+                <a href="javascript:void(0)">
+                    <h3> <img src="assets/img/settings.svg"> {{'common.SEO'| translate}} </h3>
+                    <p> {{'Settings.nav.Adminsection'|translate}}</p>
+                </a>
+            </div>
+
+            <div class="settings-col" [routerLink]="['/settings/order-fullfillment']"
+            appShowHide [multipleHideUnAuthorized]="settingPermissionConfig.orderfulfilment">
+                <a href="javascript:void(0)">
+                    <h3> <img src="assets/img/order-fulfill.svg"> {{'Settings.nav.OrderFull-FillmentStatus'|translate}}
+                    </h3>
+                    <p>{{'Settings.nav.Adminrequire'|translate}}</p>
+                </a>
+            </div>
+            <div class="settings-col" [routerLink]="['/settings/add-on']"
+            appShowHide [multipleHideUnAuthorized]="settingPermissionConfig.addOns">
+                <a href="javascript:void(0)">
+                    <h3> <img src="assets/img/addons.svg"> {{'Settings.nav.Add-Ons'|translate}} </h3>
+                    <p>{{'Settings.nav.AdminCreate'|translate}}</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<router-outlet></router-outlet>

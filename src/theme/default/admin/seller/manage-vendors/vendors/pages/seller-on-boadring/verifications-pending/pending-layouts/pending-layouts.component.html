@@ -1,0 +1,96 @@
+
+<div class="verify-seller-info">
+    <a href="javascript:void(0)"> <img src="assets/imgs/back.svg" alt="" (click)="Back()"> </a>
+    <h2>{{listvalue?.companyName}}</h2>
+    <div class="verify-seller-info-col">
+        Received on: <span>{{listvalue?.createdDate | date:'dd/MM/yy, HH:mm'}}</span>
+    </div>
+    <!-- <button class="ms-auto button-reg"> <img src="assets/imgs/square-unlock.svg" alt=""> Check-Out </button> -->
+</div>
+<div class="verify-header m-0">
+    <div class="verify-header-lft">
+        <div class="verify-header-row flex">
+            <div class="verify-header-image" >
+            
+                <img [src]="imageUrl" alt="" *ngIf="!['',null,undefined].includes(imageUrl);else nodate">
+                <ng-template #nodate>
+                    <img src="assets/images/user.svg" alt="" >
+                </ng-template>
+            </div>
+            <div class="verify-header-inner-row flex">
+                <div class="verify-header-lft-row flex">
+                    <div class="title-align">
+                        <p> <span> Seller Name : </span> {{listvalue?.customerDetail?.firstName}}
+                            {{listvalue?.customerDetail?.lastName}} </p>
+                        <p> <span> Email : </span> {{listvalue?.customerDetail?.email ? listvalue?.customerDetail?.email
+                            : '-'}} </p>
+                        <p> <span> Mobile : </span> {{listvalue?.customerDetail?.mobileNumber ?
+                            listvalue?.customerDetail?.mobileNumber : '-'}} </p>
+                    </div>
+                </div>
+                <div class="verify-header-lft-row flex">
+                    <div class="title-align">
+                        <p> <span> Date Of Birth: </span> {{listvalue?.customerDetail?.dob ?
+                            (listvalue?.customerDetail?.dob |
+                            dynamicDate:'MM/dd/yyyy') : '-'}} </p>
+                        <p> <span> Country : </span> {{listvalue?.countryName?
+                            listvalue?.countryName :'-'}} </p>
+                    </div>
+                </div>
+                <div class="verify-header-lft-row flex">
+                    <div class="title-align">
+                        <p> <span> Industry : </span> {{listvalue?.industryName ? listvalue?.industryName : '-'}} </p>
+                        <p> <span> Gender: </span> {{listvalue?.customerDetail?.gender ? listvalue?.customerDetail?.gender : '-'}}  </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="verify-container p-0">
+    <div class="verify-nav p-3">
+        <a [routerLink]="['/seller/manage-seller/seller/seller-onboarding/verify/verify']" routerLinkActive="active">
+            <img *ngIf="updateUserInfo && updateUserInfo?.companyDetail==1 ;else noimages" src="assets/imgs/check-green-round.svg"
+                alt="">
+                <ng-template #noimages>
+                    <img  src="assets/imgs/check-grey-round.svg">
+                </ng-template>
+            {{'marketplace.seller.CompanyDetails'| translate}}
+        </a>
+
+        <a [routerLink]="['/seller/manage-seller/seller/seller-onboarding/verify/bank']" routerLinkActive="active"
+            class="tick">
+            <img *ngIf="updateUserInfo?.bankAccount==1;else noimage" src="assets/imgs/check-green-round.svg" alt="">
+            {{'marketplace.seller.Bank Account Information'| translate}}
+
+            <ng-template #noimage>
+                <img  src="assets/imgs/check-grey-round.svg">
+            </ng-template>
+
+            
+        </a>
+
+        <a [routerLink]="['/seller/manage-seller/seller/seller-onboarding/verify/documents']" routerLinkActive="active"
+            class="tick">
+            <img *ngIf="updateUserInfo?.document==1;else image" src="assets/imgs/check-green-round.svg" alt="">
+            {{'marketplace.seller.Documents'| translate}}
+
+            <ng-template #image>
+                <img  src="assets/imgs/check-grey-round.svg">
+            </ng-template>
+        </a>
+
+        <a [routerLink]="['/seller/manage-seller/seller/seller-onboarding/verify/decision']" routerLinkActive="active">
+            <img *ngIf="updateUserInfo && updateUserInfo?.decision==1;else imageno" src="assets/imgs/check-green-round.svg" alt="">
+
+            {{'marketplace.seller.Decision'| translate}}
+
+            <ng-template #imageno>
+                <img  src="assets/imgs/check-grey-round.svg">
+            </ng-template>
+        </a>
+    </div>
+    <div class="verify-content">
+        <router-outlet></router-outlet>
+    </div>
+</div>

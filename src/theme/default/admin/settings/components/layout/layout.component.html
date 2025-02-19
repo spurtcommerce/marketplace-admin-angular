@@ -1,0 +1,15 @@
+<div class="settings-wrapper flex" style="display: grid;grid-template-columns: 250px auto 1fr;">
+    <div class="settings-aside">
+        <h3>{{'Settings.nav.settings' | translate}}</h3>
+        <a href="javascript:Void(0)" [routerLink]="['/settings/multiple-websites']" routerLinkActive="active" appShowHide  [multipleHideUnAuthorized]="settingPermissionConfig.storeSetting" > <span class="orderfullfilment add-on"></span> {{'Additional.Multiple websites'|translate}} </a>
+        <a href="javascript:Void(0)" [routerLink]="['/settings/local']" routerLinkActive="active" class=""appShowHide  [multipleHideUnAuthorized]="settingPermissionConfig.localization" > <span class="localization" ></span> {{'Settings.nav.Localization' | translate}}</a>
+        <a href="javascript:Void(0)" [routerLink]="['/settings/access-and-permission']" routerLinkActive="active"appShowHide [multipleHideUnAuthorized]="settingPermissionConfig.accessPermission" > <span class="permission"></span> {{'Settings.nav.Accessandpermission' | translate}}</a>
+        <a href="javascript:Void(0)" [routerLink]="['/settings/sitesettings']" routerLinkActive="active" class="" appShowHide  [multipleHideUnAuthorized]="settingPermissionConfig.system"> <span class="system"></span> {{'Settings.nav.System' | translate}}</a>
+        <a href="javascript:Void(0)" [routerLink]="['/settings/personalize']" routerLinkActive="active" class="" appShowHide [multipleHideUnAuthorized]="settingPermissionConfig.personalize"> <span class="personalize"></span> {{'Settings.nav.Personalize' | translate}}</a>
+        <a href="javascript:Void(0)" [routerLink]="['/settings/site-settings']" routerLinkActive="active" routerLinkActive="active" appShowHide [multipleHideUnAuthorized]="settingPermissionConfig.seo" > <span class="sitesettings"></span> {{'Settings.nav.SEO'|translate}} </a>
+        <a href="javascript:Void(0)" [routerLink]="['/settings/order-fullfillment']" routerLinkActive="active" routerLinkActive="active" appShowHide [multipleHideUnAuthorized]="settingPermissionConfig.orderfulfilment" > <span class="orderfullfilment"></span> {{'Settings.nav.Order-fullfillmentstatus'|translate}} </a>
+        <a href="javascript:Void(0)" [routerLink]="['/settings/add-on']" routerLinkActive="active" appShowHide [multipleHideUnAuthorized]="settingPermissionConfig.addOns"> <span class="orderfullfilment add-on"></span> {{'Settings.nav.Add-Ons'|translate}} </a>
+        
+    </div>
+    <router-outlet></router-outlet>
+</div>

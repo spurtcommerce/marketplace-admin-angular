@@ -1,0 +1,26 @@
+<div class="setup-wrapper">
+<!-- common Menu  -->
+
+    <div class="setup-container localization-container">
+
+        <div class="loc-lay-title">
+            <h3 class="page-title">{{'Settings.nav.Localization' | translate}}</h3>
+            <p class="text14">{{'Settings.paragraph.Localizationadaptation' | translate}} </p>
+        </div>
+
+        <div class="card ap-general ap-info set-loc-card">
+            <ul class="nav-tabs nav"> 
+                <li class="nav-item"><a [routerLinkActive]="'active'" [routerLink]="['/settings/local/countries']" appShowHide [hideUnAuthorized]="'list-country'" class="nav-link"> <span> {{'Settings.nav.Country' | translate}} </span> </a></li>
+                <li class="nav-item"><a [routerLinkActive]="'active'" [routerLink]="['/settings/local/language']" appShowHide [hideUnAuthorized]="'list-language'" class="nav-link"> <span> {{'common.Language'| translate}}</span></a>
+                <li class="nav-item"><a [routerLinkActive]="'active'" [routerLink]="['/settings/local/zone']" appShowHide [hideUnAuthorized]="'list-zone'" class="nav-link"> <span> {{'Settings.nav.Zone' | translate}}</span></a>
+                <li class="nav-item"><a [routerLinkActive]="'active'" [routerLink]="['/settings/local/currency']" appShowHide [hideUnAuthorized]="'list-currency'" class="nav-link"> <span> {{'Settings.nav.Currency' | translate}}</span></a>
+                <li class="nav-item"><a [routerLinkActive]="'active'" [routerLink]="['/settings/local/tax']" class="tablinks" appShowHide [hideUnAuthorized]="'list-tax'" class="nav-link"> <span> {{'Settings.nav.Tax' | translate}}</span></a>         
+            </ul>
+        </div>
+
+       
+
+    </div>
+</div>
+<!-- Router outlet page shows here  -->
+<router-outlet></router-outlet>

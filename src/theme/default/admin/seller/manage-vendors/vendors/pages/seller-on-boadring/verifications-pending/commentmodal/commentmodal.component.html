@@ -1,0 +1,43 @@
+<!-- Loader -->
+<div class="spinner-wrapper">
+    <app-global-loader [isShow]="(sandboxcompany.companyVerifyListLoading$ | async)"
+        style="transform: translate(20%, 300%);position: absolute;z-index: 1;" >
+    </app-global-loader>
+</div>
+
+<div class="comment-section" *ngIf="!(sandboxcompany.companyVerifyListLoading$ | async)">
+
+    <button class="close" (click)="dismiss()"> <img src="assets/imgs/close.svg" alt=""> </button>
+    <h3>{{'marketplace.seller.Comment Log'| translate}}</h3>
+    <div class="comment-log-list" *ngIf="commentlist?.length!=0 ||commentlist?.length!=undefined ||commentlist?.length!=''; else jjjj">
+
+        <ng-container *ngFor="let val of commentlist;let i=index">
+            <div>
+                <div class="comment-log-list-card">
+                    <p> {{val?.date | dynamicDate :'dd/MM/yyyy hh:mm a' }}</p>
+                    <h5>{{val?.commentFor}} :</h5>
+                    <div class="comment-content">
+                        {{val?.comment}}
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+
+       
+    </div>
+
+    <ng-template #jjjj>
+        No Comment there
+    </ng-template>
+
+</div>
+<div class="commentlog-bottom" *ngIf="!(sandboxcompany.companyVerifyListLoading$ | async)">
+    <div class="commentlog-bottom-input">
+        <p>Type your comments below for : <span>{{name}}</span></p>
+        <textarea name="" [(ngModel)]="textarea" (keyup.enter)="save()"></textarea>
+    </div>
+    <div class="comment-log-bottom-btn flex">
+        <button class="save" (click)="save()">{{'CMS.Pages.Save' | translate}}</button>
+        <button class="cancel" (click)="dismiss()">{{'CMS.Pages.Cancel' | translate}}</button>
+    </div>
+</div>

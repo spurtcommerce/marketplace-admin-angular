@@ -1,0 +1,55 @@
+<div *ngIf="this.router.url.split('?')[0]!=='/seller/manage-seller/seller/seller-onboarding/verify/bank' &&
+this.router.url.split('?')[0]!=='/seller/manage-seller/seller/seller-onboarding/verify/verify' && 
+this.router.url.split('?')[0]!=='/seller/manage-seller/seller/seller-onboarding/verify/decision' &&
+this.router.url.split('?')[0]!=='/seller/manage-seller/seller/seller-onboarding/verify/documents'">
+  <div class="new-buyer-wrapper">
+    <div class="new-buyer-container">
+
+      
+        <!-- <div class="new-title-back flex"> -->
+          
+            <!-- <h3>Lorem Ipsum has been the industry's standard </h3> -->
+        <!-- </div> -->
+
+        
+        <!-- <ul class="breadcrumbs">
+          <li><a href="javascript:void(0)" style="color: gray; pointer-events: none;">{{'MarketPlace.Marketplace'|translate}} </a></li>
+          <li><img src="assets/img/new/caret-right.svg" alt=""></li>
+          <li><a href="javascript:void(0)" style="color: gray; pointer-events: none;">{{'MarketPlace.ManageSeller'|translate}}  </a></li>
+          <li><img src="assets/img/new/caret-right.svg" alt=""></li>
+          <li><a href="javascript:void(0)" style="color: gray; pointer-events: none;">{{'MarketPlace.SellerOnboarding'|translate}}</a></li>
+          <li><img src="assets/img/new/caret-right.svg" alt=""></li>
+          <li><a href="javascript:void(0)" style="font-size: 12px;
+            font-weight: 600;
+            color: #222;">{{breadcrumbs}}</a></li>
+      </ul> -->
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" appShowHide [hideUnAuthorized]="'approve-vendor'">
+          <a  class="nav-link bg-transparent" id="home-tab" data-toggle="tab" [routerLink]="['/seller/manage-seller/seller/seller-onboarding/pending-submissions']" routerLinkActive="active" role="tab" aria-controls="home" routerLinkActive="active" (click)="sellerIDClear()"> <span> <img src="assets/imgs/pending.svg" alt=""> {{'marketplace.seller.Pending Submissions'| translate}} </span></a>
+        </li>
+        <li class="nav-item" appShowHide [hideUnAuthorized]="'approve-vendor'">
+          <a  class="nav-link bg-transparent" id="home-tab" data-toggle="tab" [routerLink]="['/seller/manage-seller/seller/seller-onboarding/verification']" routerLinkActive="active" role="tab" aria-controls="home" routerLinkActive="active" (click)="sellerIDClear()"> <span> <img src="assets/imgs/pending.svg" alt=""> {{'marketplace.seller.Approval Pending'| translate}} </span></a>
+        </li>
+        <li class="nav-item" appShowHide [hideUnAuthorized]="'approve-vendor'">
+          <a class="nav-link bg-transparent" id="profile-tab" data-toggle="tab" [routerLink]="['/seller/manage-seller/seller/seller-onboarding/approved']" role="tab" aria-controls="profile" routerLinkActive="active" (click)="sellerIDClear()"> <span> <img src="assets/imgs/approved.svg" alt="">  {{'marketplace.seller.Approved KYCs'| translate}} </span></a>
+        </li>
+        <li class="nav-item" appShowHide [hideUnAuthorized]="'approve-vendor'">
+            <a class="nav-link bg-transparent" id="rejected-tab" data-toggle="tab" [routerLink]="['/seller/manage-seller/seller/seller-onboarding/rejected']" role="tab" aria-controls="rejected" routerLinkActive="active" (click)="sellerIDClear()"> <span> <img src="assets/imgs/rejected.svg" alt=""> {{'marketplace.seller.Rejected KYCs'| translate}} </span></a>
+        </li>
+      </ul>
+          <div class="tab-content" id="myTabContent">
+            <!-- <ng-container>
+              <app-verification-pending></app-verification-pending>
+            </ng-container>
+            <ng-container>
+              <app-approved-seller></app-approved-seller>
+            </ng-container>
+            <ng-container>
+              <app-rejected-seller></app-rejected-seller>
+            </ng-container> -->
+        </div>
+
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>

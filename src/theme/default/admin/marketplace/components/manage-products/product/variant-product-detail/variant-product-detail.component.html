@@ -1,0 +1,279 @@
+
+<!-- <div *ngIf="productSandbox.productDetailLoading$ | async" class="loading-data">
+    <img style="height: 10vh" src="./assets/loader/Spurt-commerce-Loader-2.1.gif" />
+</div> -->
+<div class="add-variant-wrapper read-only-page">
+
+    <div class="avw-header flex">
+        <div class="avwh-lft flex">
+            <ng-container *ngFor="let imgItem of productItem.productImage">
+                <div class="avwhl-img"> <img src="assets/img/product-img2.png" alt="" [src]="imageUrls + '?path=' + imgItem.containerName + '&name=' + imgItem.image + '&width=50&height=50'"> </div>
+            </ng-container>
+            <div class="avwhl-content">
+                <h3 class="header">{{productItem.name}}</h3>
+                 <h4 class="sub-header">{{productItem.sku}}</h4>
+                <p class="text16">{{'common.Price'| translate}} : {{productItem.price| currencysymbol}}</p>
+            </div>
+        </div>
+        <h6 class="sub-sub-header">{{'common.Variants in this product'| translate}} <span>: {{(productSandbox.probabiltyOptions$ | async)?.length}}</span></h6>
+    </div>
+
+    <div class="avw-row flex" *ngIf="variantForm" [formGroup]="variantForm">
+
+        
+        <!-- lft -->
+        <div class="avwr-rht">
+            <div class="avwr-full">
+                <div class="avwr-lft">
+                    <h3>{{'catalog.product.SelectvariantNames'| translate}}</h3>
+                    <div class="avwrl-con">
+                        <div class="form-group" *ngFor="let list of productSandbox.productOptionsList$ | async">
+                            <div class="custom-control custom-checkbox mr-sm-2" [ngClass]="{'icon-disabled': selectedVaraintId.length == 3 && list.selected == false}">
+                                <input (click)="onCheckboxClick($event)" [disabled]="selectedVaraintId.length == 3 && list.selected == false" type="checkbox" class="custom-control-input" [id]="list?.id" [checked]="list?.selected" />
+                                <label class="custom-control-label" [for]="list?.id"> {{list?.name}} </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="avwrr-values">
+                    <h3>{{'catalog.product.VariantValues'| translate}}</h3>
+                    <div class="product-table">
+                        <div class="table-responsive">
+                            <table class="table" *ngIf="(productSandbox.selectedVariant$ | async)?.length > 0">
+                                <thead>
+                                    <tr>
+                                        <th>{{'catalog.product.VariantNames'| translate}}</th>
+                                        <th>{{'catalog.product.VariantValue 1'| translate}}</th>
+                                        <th>{{'catalog.product.VariantValue 2'| translate}}</th>
+                                        <th>{{'catalog.product.VariantValue 3'| translate}}</th>
+                                        <th>{{'catalog.product.VariantValue 4'| translate}}</th>
+                                        <th>{{'catalog.product.VariantValue 5'| translate}}</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>   
+                                <tbody>
+                                    <tr *ngFor="let value of productSandbox.selectedVariant$ | async">
+                                        <td class="name">{{value.name}}</td>
+                                        <ng-container *ngFor="let item of value.variantValues">
+                                            <td> <input type="text" [readonly]="true" value="{{item.value}}"> </td>
+                                        </ng-container>
+                                        <ng-container *ngIf="checkLength(value.variantValues?.length)">
+                                            <ng-container *ngFor="let i of emptyVariant">
+                                                <td> <input [readonly]="true" type="text" value=""> </td>
+                                            </ng-container>
+                                        </ng-container>
+                                        <!-- <td> <button [ngClass]="{'disable': orderFlag === 1}"> <img src="assets/img/delete.svg" alt=""
+                                            > </button> </td> -->
+                                    </tr>
+                                </tbody>  
+                            </table>
+                        </div>
+                    </div>                
+                </div>
+            </div>
+
+            <div class="avwrr-details read-only-page" *ngIf="(productSandbox.probabiltyOptions$ | async)?.length > 0">
+                <h3>{{'common.Variant Details'| translate}}</h3>
+                <div class="product-table">
+                    <div class="table-responsive">
+                        <table class="table">
+
+                            <thead>
+                                <tr>
+                                    <th class="text-center">{{'catalog.product.Image'| translate}}</th>
+                                    <th>{{'catalog.product.Options'| translate}}</th>
+                                    <th>{{'catalog.product.Sku'| translate}}</th>
+                                    <!-- <th>{{'catalog.product.Price'| translate}}</th> -->
+                                    <th>Default Price<sup style="top: -0.2rem;">*</sup></th>
+                                    <!-- <th>Tax</th> -->
+                                    <th>{{'catalog.product.Inventory'| translate}}<sup style="top: -0.2rem;">*</sup>
+                                        <button type="button" class="btn tool-btn" placement="bottom" ngbTooltip="{{'marketplace.common.variantDetailInventory'| translate}}."><img src="assets/img/info-ico.png" alt="info"></button>
+                                    </th>
+                                    <th class="w-10">{{'catalog.product.DiscountPrice'| translate}}
+                                        <button type="button" class="btn tool-btn" placement="bottom" ngbTooltip="{{'marketplace.common.variantDetaildiscountprice'| translate}}."><img src="assets/img/info-ico.png" alt="info"></button>
+                                    </th>
+                                    <th class="w-10"> {{'catalog.product.DiscountStart'| translate}}
+                                        <button type="button" class="btn tool-btn" placement="bottom" ngbTooltip="{{'marketplace.common.variantDetailDiscountStart'| translate}}."><img src="assets/img/info-ico.png" alt="info"></button>
+                                    </th>
+                                    <th >{{'catalog.product.DiscountEnd'| translate}}
+                                        <button type="button" class="btn tool-btn" placement="bottom" ngbTooltip="{{'marketplace.common.variantDetailDiscountEnd'| translate}}."><img src="assets/img/info-ico.png" alt="info"></button>
+                                    </th>
+                                    <th class="w-10"> {{'catalog.product.SpecialPrice'| translate}}
+                                        <button type="button" class="btn tool-btn" placement="bottom" ngbTooltip="{{'marketplace.common.variantDetailSpecialprice'| translate}}."><img src="assets/img/info-ico.png" alt="info"></button>
+                                    </th>
+                                    <th>{{'catalog.product.SpecialStart'| translate}}
+                                        <button type="button" class="btn tool-btn" placement="bottom" ngbTooltip="{{'marketplace.common.variantDetailSpecialStart'| translate}}."><img src="assets/img/info-ico.png" alt="info"></button>
+                                    </th>
+                                    <th>{{'catalog.product.SpecialEnd'| translate}}
+                                        <button type="button" class="btn tool-btn" placement="bottom" ngbTooltip="{{'marketplace.common.variantDetailSpecialEnd'| translate}}."><img src="assets/img/info-ico.png" alt="info"></button>
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            
+    
+                            <ng-container formArrayName="variantItems" *ngFor="let options of variantForm.get('variantItems')['controls']; let i = index;">
+                                <ng-container [formGroupName]="i">
+                                    <tbody>
+                                        <tr>
+                                            <!-- image -->
+                                            <td class="text-center">
+                                                <div class="avwrrd-img" *ngIf="optionImageArray[i]?.length > 0">
+                                                    <ng-container *ngFor="let imgItem of optionImageArray[i]">
+                                                        <img class="avwrr-prd-img" [src]="imageUrls + '?path=' + imgItem.containerName + '&name=' + imgItem.image + '&width=60&height=60'">
+                                                        <a href="javascript:void(0)"> <img src="assets/img/close-rd-lite.svg" alt=""> </a>
+                                                    </ng-container>
+                                                </div>
+        
+                                                <div class="avwrrd-img-empty" style="" *ngIf="optionImageArray[i]?.length === 0">
+                                                    <img src="assets/img/add-photo.svg" class="avwrr-emp-img" >
+                                                </div>
+                                            </td>
+                                            <!-- option -->
+                                            <td>
+                                                <ng-container *ngFor="let item of optionValueArray[i]; let j = index">
+                                                    <span *ngIf="j > 0 && j < optionValueArray[i].length">-</span><span>{{item.value}}</span>
+                                                </ng-container>
+                                            </td>
+                                            <!-- Sku -->
+                                            <td>
+                                                <input readonly type="text" class="sku" formControlName="sku" [ngClass]="{'error-field':options.get('sku').hasError('required') && submittedValues == true,'disable flag': orderFlag === 1 }">
+                                                <ng-container *ngIf="options.get('sku').hasError('required') && submittedValues == true">
+                                                    <span class="errorMsg">{{'catalog.Error.Skuisrequired'| translate}}</span>
+                                                </ng-container>
+                                            </td>
+                                            <!-- default price -->
+                                            <td>
+                                                <div class="avwwr-price">
+                                                    <input readonly type="text" formControlName="price" appTwoDigitDecimaNumber [ngClass]="{'error-field':options.get('price').hasError('required') && submittedValues == true}">
+                                                    <span [ngClass]="{'error-field':options.get('price').hasError('required') && submittedValues == true}">{{currencySymbol?.symbol}}</span>
+                                                </div>
+                                                <ng-container *ngIf="options.get('price').hasError('required') && submittedValues == true">
+                                                    <span class="errorMsg">{{'catalog.Error.Priceisrequired'| translate}}</span>
+                                                </ng-container>
+                                            </td>
+                                            <!-- <td> -->
+                                                <!-- <input type="text" name="Tax" id=""> -->
+                                                <!-- <input type="text" class="barcode" formControlName="barcode"> -->
+                                            <!-- </td> -->
+                                             <!-- inventory -->
+                                            <td>
+                                                <input readonly type="text" class="inventory" formControlName="inventory" appOnlyNumber [ngClass]="{'error-field':options.get('inventory').hasError('required') && submittedValues == true}">
+                                                <ng-container *ngIf="options.get('inventory').hasError('required') && submittedValues == true">
+                                                    <span class="errorMsg">{{'catalog.Error.Inventoryisrequired'| translate}}</span>
+                                                </ng-container>
+                                            </td>
+                                            <!-- discount price -->
+                                            <td>
+                                                <div class="avwwr-price">
+                                                    <input readonly type="text" formControlName="discountPrice" appOnlyNumber [ngClass]="{'error-field': +(options.get('price').value) < +(options.get('discountPrice').value)}">
+                                                    <span>{{currencySymbol?.symbol}}</span>
+                                                </div>
+                                            </td>
+                                            <!-- d start date -->
+                                            <td>
+                                                <input readonly
+                                                    style="background-color:white;width:100%"
+                                                    type="text" class="form-control date1"
+                                                    placeholder="DD/MM/YYYY"
+                                                    formControlName="discountStart"
+                                                    name="dp" ngbDatepicker #g="ngbDatepicker"
+                                                    [minDate]="variantForm.value.variantItems[i].discountStart < minPickerDate ? variantForm.value.variantItems[i].discountStart || minPickerDate:minPickerDate "
+                                                    [ngClass]="{'error-field': (variantForm.value.variantItems[i].discountPrice)&&!(variantForm.value.variantItems[i].discountStart.day) && priceValid}"
+                                                />
+                                            </td>
+                                            <!-- d end date -->
+                                            <td>
+                                                <input readonly
+                                                    style="background-color:white;width:100%"
+                                                    type="text" class="form-control date1"
+                                                    placeholder="DD/MM/YYYY"
+                                                    formControlName="discountEnd"
+                                                    name="dp" ngbDatepicker #h="ngbDatepicker"
+                                                    [minDate]="variantForm.value.variantItems[i].discountStart ||minPickerDate"
+                                                    
+                                                    [ngClass]="{'error-field': (variantForm.value.variantItems[i].discountPrice)&&!(variantForm.value.variantItems[i].discountEnd.day) && priceValid}"
+                                                />
+                                            </td>
+                                            <!-- special price -->
+                                            <td>
+                                                <div class="avwwr-price">
+                                                    <input readonly type="text" formControlName="specialPrice" appOnlyNumber [ngClass]="{'error-field': +(options.get('price').value) < +(options.get('specialPrice').value)}">
+                                                    <span>{{currencySymbol?.symbol}}</span>
+                                                </div>
+                                                <!-- <ng-container *ngIf="options.get('price').value < options.get('specialPrice').value">
+                                                    <span class="errorMsg">Special Price Must be less than Default Price</span>
+                                                </ng-container> -->
+                                            </td>
+                                            <!-- s start date -->
+                                            <td>
+                                                <input readonly
+                                                    style="background-color:white;width:100%"
+                                                    type="text" class="form-control date1"
+                                                    placeholder="DD/MM/YYYY"
+                                                    name="dp" ngbDatepicker #m="ngbDatepicker"
+                                                    
+                                                    formControlName="specialPriceStart"
+                                                    [minDate]="variantForm.value.variantItems[i].specialPriceStart < minPickerDate ? variantForm.value.variantItems[i].specialPriceStart || minPickerDate:minPickerDate "
+                                                    [ngClass]="{'error-field': (variantForm.value.variantItems[i].specialPrice)&&!(variantForm.value.variantItems[i].specialPriceStart.day) && priceValid}"
+                                                />
+                                            </td>
+                                            <!-- s end date -->
+                                            <td>
+                                                <input readonly
+                                                    style="background-color:white;width:100%"
+                                                    type="text" class="form-control date1"
+                                                    placeholder="DD/MM/YYYY"
+                                                    name="dp" ngbDatepicker #n="ngbDatepicker"
+                                                   
+                                                    formControlName="specialPriceEnd"
+                                                    [minDate]="variantForm.value.variantItems[i].specialPriceStart ||minPickerDate"
+                                                    [ngClass]="{'error-field': (variantForm.value.variantItems[i].specialPrice)&&!(variantForm.value.variantItems[i].specialPriceEnd.day) && priceValid}"
+                                                />
+                                            </td>
+                                            <!-- <td class="text-center">
+                                                <div class="dropdown action-dropdown" ngbDropdown [ngClass]="{'disable': orderFlag === 1}">
+                                                    <i class="fa fa-ellipsis-v cursor" style="padding: 0 15px"
+                                                        id="dropdownMenuButton" ngbDropdownToggle></i>
+                                                    <div ngbDropdownMenu
+                                                        class="dropdown-menu">
+                                                        <a class="dropdown-item" ngbDropdownItem (click)="changeStatus(options.value.isActive,i)"> {{options.value.isActive == true?'In-Active':'Active'}} </a>
+                                                        <a  class="dropdown-item" ngbDropdownItem (click)="removeProbablityOption(options, i)">Delete</a>                                               
+                                                    </div>
+                                                </div>
+                                               
+                                            </td> -->
+                                            <!-- <td> <button> <img src="assets/img/delete.svg" alt="" (click)="removeProbablityOption(options, i)"> </button> </td> -->
+                                        </tr>
+                                    </tbody>                                    
+                                </ng-container>
+                            </ng-container>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="action-button-container flex">
+    <!-- Cancel Button -->
+    <button (click)="cancel()" class="button-reg btn-md secondary">
+        {{'catalog.product.Cancel'| translate}}
+    </button>
+    
+    <!-- Reject Button -->
+    <button [ngClass]="{'disable': approvalFlag == 2}"
+        *ngIf="routeName == 'AllProducts' || routeName == 'ApprovedProducts' || routeName == 'WaitingForApproval' "
+        class="button-reg btn-md tertiary" (click)="rejectComment()">
+        {{'marketplace.common.Reject' | translate}}
+    </button>
+    
+    <!-- Approve Button -->
+    <button [disabled]="approvalFlag == 1"
+        *ngIf="routeName == 'AllProducts' || routeName == 'RejectedProducts' || routeName == 'WaitingForApproval' "
+        class="button-reg btn-md primary" (click)="approveProduct()">
+        {{'marketplace.common.Approve' | translate}}
+    </button>
+</div>

@@ -1,0 +1,126 @@
+.decision-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.decision-seller {
+    flex-basis: 542px;
+    flex-grow: 1;
+}
+
+.comment-section {
+    flex-basis: 485px;
+    flex-grow: 1;
+    background-color: rgba(39, 57, 69, 0.04);
+}
+
+.decision-seller-inner {
+    padding: 1.185rem 0rem;
+
+    h4 {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #222;
+        margin: 0;
+    }
+}
+
+.container-inner {
+    width: 289px;
+}
+
+.decision-seller-inner-row {
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: solid 1px #d3d3d3;
+    padding-block: 0.6875rem;
+
+    h5 {
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: #4e4e4e;
+        margin: 0;
+    }
+}
+
+.commentlog-bottom-input {
+    margin-bottom: 0.8125rem;
+
+    p {
+        font-size: 0.8125rem;
+        font-weight: 500;
+        color: #474747;
+        margin-bottom: 0.3125rem;
+    }
+
+    textarea {
+        width: 100%;
+        height: 5rem;
+        border-radius: 0.1875rem;
+        border: solid 1px #d6d6d6;
+        background-color: #fff;
+        padding: 0.3125rem;
+    }
+
+    .errorclass {
+        border: 1px solid red;
+    }
+}
+
+.approve-seller {
+    opacity: 0.16;
+}
+
+.approve-sellers {
+    opacity: 0.16;
+}
+
+.reject-sellers {
+    opacity: 0.16;
+}
+
+.spinner-wrapper {
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+}
+
+.comment-section .comment-log-list {
+    height: fit-content;
+}
+
+.previous {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.title-align{
+    display: grid;
+    grid-template-columns: 0.7fr 10px 1fr;
+    align-items: baseline;
+    text-wrap: nowrap !important;
+    span {
+        font-size: 0.875rem;
+        font-weight: 400;
+    }
+}
+
+h3.verify-reject span {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.3125rem;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: #068E06;
+    text-transform: uppercase;
+}
+
+.chk-group.chk-group-seller {
+    padding: 1px 6px 2px 7px;
+    border-radius: 0.1875rem;
+    background: none;
+    display: inline-block;
+    text-align: left;
+}

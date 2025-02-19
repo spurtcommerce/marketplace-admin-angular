@@ -1,0 +1,84 @@
+.decision-seller {
+    width: 100%;
+}
+.comment-section {
+    width: 100%;
+    background-color: white;
+    margin-top: 0.9125rem;
+    padding-bottom: 1rem;
+    .comment-log-list {
+        overflow-y: visible;
+        height: auto;
+        .comment-content {
+            max-width: 85%;
+        }
+    }
+}
+.decision-seller-inner {
+    padding: 1.185rem 1rem;
+    h4 {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #222;
+    }
+    
+}
+.seller-info-verification {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0 1.8125rem;
+    &.mt-40 {
+        margin-top: 2.5rem;
+    }
+}
+.decision-seller-inner-row {
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: solid 1px #d3d3d3;
+    padding-block: 0.6875rem;
+    h5 {
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: #4e4e4e;
+    }
+}
+
+.commentlog-bottom-input {
+    margin-bottom: 0.8125rem;
+    p {
+        font-size: 0.8125rem;
+        font-weight: 500;
+        color: #474747;
+        margin-bottom: 0.3125rem;
+    }
+    textarea {
+        width: 100%;
+        height: 8.4375rem;
+        border-radius: 0.1875rem;
+        border: solid 1px #d6d6d6;              
+        background-color: #fff;
+        padding: 0.3125rem;
+    }
+    button {
+        width: 15.625rem;
+        height: 2.6875rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 0.1875rem;
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: #fff;
+        border: 0;
+        margin: 1.3125rem auto;
+        &.approve {
+            background-color: #078e05;
+        }
+        &.reject {
+            background-color: #ac0101;
+        }
+    }
+}
+.comment-section .comment-log-list .comment-log-list-card h5 {
+    margin-bottom: 0.5625rem;
+}

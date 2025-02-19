@@ -1,0 +1,211 @@
+<div class="verify-header d-none">
+    <div class="verify-header-lft">
+        <!-- <h3>{{details?.companyName}}</h3> -->
+        <!-- <div class="verify-header-row flex">
+            <div class="verify-header-lft-row flex">
+                <div class="title-align">
+                    <p>{{'marketplace.seller.Industry'| translate}}</p> <span>:</span> <span>
+                        {{details?.industryName ? details?.industryName : '-'}} </span>
+                    <p>{{'marketplace.seller.Country'| translate}}</p> <span>:</span> <span> {{details?.countryName
+                        ?details?.countryName:'-'}} </span>
+                    <p>{{'marketplace.seller.ReceivedOn'| translate}}</p> <span>:</span> <span>
+                        {{details?.createdDate | dynamicDate:'dd/MM/yyyy'}} </span>
+                </div>
+            </div>
+            <div class="verify-header-lft-row flex">
+                <div class="title-align">
+                    <p>{{'marketplace.seller.FirstName'| translate}}</p> <span>:</span> <span>
+                        {{details?.customerDetail?.firstName}} </span>
+                    <p>
+                        {{'marketplace.seller.LastName'| translate}} </p> <span>:</span> <span>
+                        {{details?.customerDetail?.lastName ? details?.customerDetail?.lastName : '-'}}
+                    </span>
+                    <p>
+                        {{'marketplace.seller.DOB'| translate}} </p> <span>:</span>
+                    <span> {{details?.customerDetail?.dob ? (details?.customerDetail?.dob |
+                        dynamicDate:'MM/dd/yyyy') : '-'}} </span>
+                </div>
+            </div>
+            <div class="verify-header-lft-row flex">
+                <div class="title-align">
+                    <p> {{'marketplace.seller.Gender'| translate}}</p> <span>:</span> 
+                    <span> {{details?.customerDetail?.gender ? details?.customerDetail?.gender : '-'}} </span>
+                    <p>{{'marketplace.seller.Email'| translate}}</p> <span>:</span> 
+                    <span> {{details?.customerDetail?.email ? details?.customerDetail?.email : '-'}} </span>
+                    <p>{{'marketplace.seller.Mobile'| translate}}</p> <span>:</span> 
+                    <span> {{details?.customerDetail?.mobileNumber ? details?.customerDetail?.mobileNumber : '-'}} </span>
+                </div>
+            </div>
+        </div> -->
+    </div>
+</div>
+
+<div class="flex addproduct-wrap">
+    <div class="card ap-general">
+        <div class="ap-header sub-sub-header">
+            <h3>{{'marketplace.seller.Decision'| translate}}</h3>
+            <p>{{'marketplace.seller.DecisionInfo'| translate}}</p>
+        </div>
+
+        <!-- loader -->
+        <div class="spinner-wrapper">
+            <app-global-loader
+                [isShow]="(sandboxcompany.companyVerifyListLoading$  | async)||(sandoxcomment.commentLoading$  | async)"
+                style="transform: translate(38%, 50%);position:absolute">
+            </app-global-loader>
+        </div>
+
+        <div class="ap-body">
+            <div class="decision-container">
+                <div class="decision-seller" style="display: grid; grid-template-rows: 1fr auto;">
+                    <div class="decision-seller-inner">
+                        <h4>{{'marketplace.seller.VendorInformation'| translate}}</h4>
+
+
+                        <div class="decision-seller-inner-row flex">
+                            <h5>{{'marketplace.seller.CompanyDetails'| translate}}</h5>
+                            <div class="chk-group chk-group-seller" style="pointer-events: none;">
+                                <h3 class="verify-reject">
+                                <span *ngIf="companyDetailStatus == true"> <img src="assets/imgs/check-green-round.svg"
+                                        alt=""> Verified
+                                </span>
+                                <span *ngIf="companyDetailStatus == false"> <img src="assets/imgs/check-grey-round.svg"
+                                        alt=""> Pending
+                                </span>
+                                </h3>
+                                <!-- <input type="checkbox" id="html" checked="true" [checked]="companyDetailStatus"
+                                    [disabled]="true"> -->
+                                <!-- <label for="html">{{'fullfillment.Verified' | translate}}</label> -->
+                            </div>
+                        </div>
+
+                        <div class="decision-seller-inner-row flex">
+                            <h5>{{'marketplace.seller.Bank Account Information'| translate}}</h5>
+                            <div class="chk-group chk-group-seller" style="pointer-events: none;">
+
+                                <h3 class="verify-reject">
+                                    <span *ngIf="BankAccountInfo == true"> <img src="assets/imgs/check-green-round.svg"
+                                            alt=""> Verified
+                                    </span>
+                                    <span *ngIf="BankAccountInfo == false"> <img src="assets/imgs/check-grey-round.svg"
+                                            alt=""> Pending
+                                    </span>
+                                    </h3>
+                                <!-- <input type="checkbox" id="html" checked="true" [checked]="BankAccountInfo"
+                                    [disabled]="true">
+                                <label for="html">{{'fullfillment.Verified' | translate}}</label> -->
+                            </div>
+                        </div>
+
+                        <div class="decision-seller-inner-row flex">
+                            <h5>{{'marketplace.seller.Documents'| translate}}</h5>
+                            <div class="chk-group chk-group-seller" style="pointer-events: none;">
+
+                                <h3 class="verify-reject">
+                                    <span *ngIf="Documents == true"> <img src="assets/imgs/check-green-round.svg"
+                                            alt=""> Verified
+                                    </span>
+                                    <span *ngIf="Documents == false"> <img src="assets/imgs/check-grey-round.svg"
+                                            alt=""> Pending
+                                    </span>
+                                    </h3>
+
+                                <!-- <input type="checkbox" id="html" [checked]="Documents" [disabled]="true">
+                                <label for="html">{{'fullfillment.Verified' | translate}}</label> -->
+                            </div>
+                        </div>
+
+                        <!-- seller group -->
+                        <!-- <div class="decision-seller-inner-row flex">
+                            <h5>{{'marketplace.seller.Vendorgroup' | translate}}</h5>
+                            <div class="form-group" style="width: 200px;">
+                                <ng-select [(ngModel)]="sellerGroupId"
+                                    placeholder="{{'placeholder.Select Option'|translate}}" [searchable]="true"
+                                    [clearable]="false" required
+                                    [ngClass]="{'validation-error errorclass': submit && !sellerGroupId}">
+                                    <ng-container class="container-inner"
+                                        *ngFor="let arr of vendorGroupList.vendorGroup$ | async">
+                                        <ng-container *ngIf="arr.isActive == 1">
+                                            <ng-option [value]='arr.groupId' class="opt">{{arr.name}}</ng-option>
+                                        </ng-container>
+                                    </ng-container>
+                                </ng-select>
+                                <div *ngIf="!sellerGroupId && submit" class="validation-error">
+                                    {{'marketplace.seller.vendorGroupisRequired'| translate}}
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                    <!-- Comment Box -->
+                    <div>
+                        <div class="commentlog-bottom-input form-group">
+                            <p>{{'marketplace.seller.Comments On Approval or Rejection'| translate}}</p>
+                            <textarea class="form-control" name="" [(ngModel)]="commentstate"
+                                placeholder="Enter the comments" appSpacedirective
+                                [ngClass]="{'validation-error errorclass': submit && !commentstate}">
+                            </textarea>
+                            <div *ngIf="!commentstate && submit" class="validation-error">
+                                {{'marketplace.seller.Required'| translate}}
+                            </div>
+                        </div>
+
+                        <!-- show comment log -->
+                        <div class="comment-section" *ngIf="AllCommentstate?.length > 0">
+                            <h3>{{'marketplace.seller.PreviousApprovalOrRejectLog'| translate}}</h3>
+                            <div class="comment-log-list previous">
+                                <ng-container *ngFor="let val of AllCommentstate;let i=index">
+                                    <div class="comment-log-list-card">
+                                        <p> {{val?.date | dynamicDate:'dd MMMM yyyy HH:mm a' }}</p>
+                                        <!-- <h5>{{val?.commentFor}} :</h5> -->
+                                        <div class="comment-content">
+                                            {{val?.comment}}
+                                        </div>
+                                    </div>
+                                </ng-container>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Comment Log -->
+                <div class="comment-section">
+                    <h3>{{'marketplace.seller.Comment Log'| translate}}</h3>
+                    <div class="comment-log-list">
+
+                        <!-- no data found -->
+                        <div class="nodata-found" *ngIf="commentlist?.length == 0 || commentlist == null">
+                            <span> <img src="assets/imgs/nodatafound.svg" alt=""> </span>
+                            <h5>{{'Settings.data.DataNotFound' | translate}}</h5>
+                        </div>
+                        <!-- log -->
+                        <ng-container *ngFor="let val of commentlist;let i=index">
+                            <div *ngIf="'decision'!=val.commentFor">
+                                <div class="comment-log-list-card">
+                                    <p> {{val?.date | dynamicDate:'dd MMMM yyyy HH:mm a' }}</p>
+                                    <h5>{{val?.commentFor}} :</h5>
+                                    <div class="comment-content">
+                                        {{val?.comment}}
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Approve Or Reject Seller Button -->
+<div class="save-btns verify-save-btns flex">
+    <button class="button-reg btn-md secondary ms-auto" (click)="RejectedSeller()"
+        [ngClass]="{'approve-sellers': approvedBtnhide, 'approve-seller': rejectedBtnhide, 'reject-sellers' : approvedState == false}"
+        [disabled]="approvedBtnhide || rejectedBtnhide || approvedState == false">
+        {{'marketplace.seller.RejectSeller'| translate}}
+    </button>
+    <button class="button-reg btn-md primary" (click)="ApprovedSeller()"
+        [ngClass]="{'approve-seller': approvedState,'approve-sellers': approvedBtnhide}"
+        [disabled]="approvedState || approvedBtnhide">{{'marketplace.seller.ApproveSeller'|
+        translate}}
+    </button>
+</div>

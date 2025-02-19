@@ -1,0 +1,111 @@
+
+<div class="verify-content">
+    <div class="verify-header">
+        <div class="verify-header-lft">
+            <h3>{{listvalue?.companyName}}</h3>
+            <div class="verify-header-lft-row flex">
+                <p>{{'marketplace.seller.Industry'| translate}} : {{listvalue?.industryName}}</p>
+                <p>{{'marketplace.seller.Country'| translate}}  : {{country}}</p>
+                <p>{{'marketplace.seller.ReceivedOn'| translate}} :{{listvalue?.createdDate | date: 'dd/MM/yyyy'}}</p>
+            </div>
+        </div>
+        <div class="verify-header-rht">
+            <div class="verify-header-rht-col">
+                <span>{{'marketplace.seller.FirstName'| translate}}</span> : {{listvalue.customerDetail?.firstName}}
+            </div>
+            <div class="verify-header-rht-col">
+                <span>{{'marketplace.seller.LastName'| translate}}</span> : {{listvalue?.customerDetail?.lastName}}
+            </div>
+            <div class="verify-header-rht-col">
+                <span>{{'marketplace.seller.DOB'| translate}}</span> : {{listvalue?.customerDetail?.dob |date:'MM/dd/yyyy'}}
+            </div>
+            <div class="verify-header-rht-col">
+                <span>{{'marketplace.seller.Gender'| translate}}</span> : {{listvalue?.customerDetail?.gender}}
+            </div>
+            <div class="verify-header-rht-col">
+                <span>{{'marketplace.seller.Email'| translate}}</span> : {{listvalue?.customerDetail?.email}}
+            </div>
+            <div class="verify-header-rht-col">
+                <span>{{'marketplace.seller.Mobile'| translate}}</span> : {{listvalue?.customerDetail?.mobileNumber}}
+            </div>
+        </div>
+    </div>
+    <div class="verify-inner-content">
+        <div class="verify-inner-title flex">
+            <h3>{{'marketplace.seller.Store front'| translate}}</h3>
+            <button class="cancel" (click)="VerifyButton()" [disabled]="storefrontDisableState==false?false:true"><img *ngIf="storeFront" src="assets/img/verify-tick.svg" alt=""><span *ngIf="storeFront==1;else verified">Verified</span></button>
+            <ng-template #verified>
+                {{'marketplace.seller.Verify'| translate}}
+            </ng-template>
+            <div class="verify-inner-title-rht flex">
+                <!-- <div class="chk-group chk-group-seller">
+
+                    <ng-container *ngIf="storefrontDisableState==false; else loggedOutsdddssss">
+                        <input type="checkbox" id="html-verify" value="storeFrontStatusVerify" name="storeFrontStatusVerify"
+                    [(ngModel)]="storeFrontStatuschecked" (change)="verifyChecked('storeFrontStatusVerify')">
+                    <label for="html-verify">Verified</label>
+    
+                    </ng-container>
+                    <ng-template #loggedOutsdddssss>
+                        <input type="checkbox" id="htmslss0hdssd"  [checked]="false"
+                        disabled="true" style="pointer-events: none;">
+                    <label for="htmslss0hdssd" style="pointer-events: none;">Verified</label>
+                      </ng-template>
+
+                   
+                </div> -->
+            </div>
+        </div>
+
+        <div class='page-wrapper page-wrapper__profile'>
+            <div class='profile-aside'>
+              
+             
+            </div>
+            <div class='profile-container'>
+                <div class='profile-container__header'>
+                    <h3>{{'marketplace.seller.Store front'| translate}}</h3>
+                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr</p>
+                </div>
+                <div class="spinner-wrapper">
+                    <app-global-loader [isShow]="(sandbox.storeverifyListLoading$  | async) || (sandbox.storeverifyLoading$  | async)"
+                      style="transform: translate(38%, 50%);position:absolute; z-index: 3;"></app-global-loader>
+                  </div> 
+                <div class='company-card'>
+                    <h3>{{'marketplace.seller.Basic Company Details'| translate}}</h3>
+                   
+                    <div class='storefront-cover-wrap'>
+                        <img [src]="coverimage"style="height: 100%;width: 100%;"/>
+                        <div class='storefront-cover__pic'>
+                            <img [src]="image" style="height: 100%;width: 100%;"/>
+                        </div>
+                    
+                    </div>
+                   
+                    <div class='input-group disableState'>
+                        <p>{{'marketplace.seller.About Us'| translate}}</p>
+                        <div class='ig-row'>
+                            <textarea [disabled]="true">{{textarea}}</textarea>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    
+</div>
+<div class="save-btns verify-save-btns flex">
+    <button class="cancel prev" (click)="pervious()">{{'marketplace.seller.Previous'| translate}}</button>
+    
+    
+    <ng-template #iops>
+        <button class="cancel" ><img style="height:30px" src="./assets/loader/Spurt-commerce-Loader-2.1.gif" /></button>
+        
+    </ng-template>
+    <button class="comments" (click)="opencommentlog()"> <img src="assets/imgs/chat.svg" alt="">{{'marketplace.seller.Comments'| translate}}</button>
+    <button class="cancel" (click)="nextButton()">{{'marketplace.seller.Next'| translate}}</button>
+</div>
+
+
+

@@ -1,0 +1,129 @@
+.spinner-wrapper {
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+}
+
+.verify-inner-title .cancel {
+    background-color: white;
+    border: solid thin #078e05;
+    color: #078e05;
+    width: 7.3125rem;
+    height: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.1875rem;
+    font-size: 0.75rem;
+    font-weight: bold;
+    gap: 0.425rem;
+    margin-left: auto;
+}
+
+.input-group .ig-row {
+    width: 100%;
+
+    .form-group {
+        input {
+            display: block;
+            width: 100%;
+            height: 2.5rem !important;
+            border-radius: 0.1875rem;
+            border: solid 1px #c7c7c7;
+            background-color: #fff;
+            padding: 0 0.625rem;
+            font-size: .875rem;
+            font-weight: 500;
+            color: #222;
+        }
+    }
+
+}
+
+[tooltip] {
+    position: relative;
+}
+
+[tooltip][flow^=left]:hover:before,
+[tooltip][flow^=left]:hover:after,
+[tooltip][flow^=right]:hover:before,
+[tooltip][flow^=right]:hover:after {
+    animation: tooltips-horz .3s ease-out forwards;
+}
+
+[tooltip][flow^=right]:before {
+    top: 50%;
+    border-left-width: 0;
+    border-right-color: #333;
+    right: calc(0em - 5px);
+    transform: translate(0.5em, -50%);
+}
+
+[tooltip]:hover:before,
+[tooltip]:hover:after {
+    display: block;
+}
+
+[tooltip]:before {
+    content: "";
+    border: 5px solid transparent;
+    z-index: 1001;
+}
+
+[tooltip]:before,
+[tooltip]:after {
+    text-transform: none;
+    font-size: .9em;
+    line-height: 1;
+    -webkit-user-select: none;
+    user-select: none;
+    pointer-events: none;
+    position: absolute;
+    display: none;
+    opacity: 0;
+}
+
+
+[tooltip]:hover:before,
+[tooltip]:hover:after {
+
+    opacity: 1;
+}
+
+
+[tooltip]:after {
+    content: attr(tooltip);
+    font-family: Helvetica, sans-serif;
+    text-align: center;
+    min-width: 3em;
+    max-width: 30em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0.625rem 1rem;
+    border-radius: 0.1875rem;
+    box-shadow: 0 1em 2em -0.5em #00000059;
+    background: #0E2A3E;
+    color: #fff;
+    z-index: 1000;
+    font-size: .75rem;
+    font-weight: 400;
+    top: -26%;
+    left: 186%;
+}
+
+.title-align{
+    display: grid;
+    grid-template-columns: 0.7fr 10px 1fr;
+    align-items: baseline;
+    text-wrap: nowrap !important;
+    span {
+        font-size: 0.875rem;
+        font-weight: 400;
+    }
+}
+
+.handsymbolRemove{
+    pointer-events: none;
+    opacity: 0.6;
+}

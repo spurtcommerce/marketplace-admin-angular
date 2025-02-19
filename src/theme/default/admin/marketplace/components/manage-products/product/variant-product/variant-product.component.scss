@@ -1,0 +1,199 @@
+.add-variant-wrapper {
+    padding: 20px 38px;
+    background-color: #fff;
+    .avw-header {
+        width: 100%;
+        box-shadow: 0 2px 8px 0 #00000021;
+        background-color: white;
+        padding: 13px 26px;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+        .avwh-lft {
+            justify-content: flex-start;
+            align-items: flex-start;
+            width: 60%;
+            .avwhl-img {
+                width: 59px;
+            }
+            .avwhl-content {
+                width: calc(100% - 59px);
+                h3 {
+                    font-size: 18px;
+                    font-weight: 500;
+                    color: #181918;
+                    margin: 0 0 7px;
+                }
+                h4 {
+                    font-size: 14px;
+                    font-weight: 500;
+                    color: #777;
+                    margin: 0 0 7px;
+                }
+                p {
+                    font-size: 14px;
+                    font-weight: 400;
+                    color: #777;
+                    margin: 0;
+                    span {
+                        font-weight: 500;
+                    }
+                }
+            }
+        }
+        h2 {
+            font-size: 16px;
+            font-weight: normal;
+            color: #212121;
+            margin: 0;
+            span {
+                font-weight: 500;
+            }
+        }
+    }
+    .avw-row {
+        width: 100%;
+        justify-content: space-between;
+        .avwr-lft {
+            width: 290px;
+            border: solid 1px #e0e0e0;
+            background-color: #fcfcfc;
+            padding: 14px;
+            h3 {
+                font-size: 16px;
+                font-weight: 600;
+                color: #0b0b0b;
+                margin-bottom: 1rem;
+            }
+            .avwrl-con {
+                padding: 0 0 0 10px;
+                .custom-control {
+                    padding-left: 0;
+                    margin-bottom: 14px;
+                }
+                .custom-control-label {
+                    font-size: 14px;
+                    font-weight: 500;
+                    color: #0b0b0b;
+                    padding-left: 20px;
+                    span {
+                        font-weight: 400;
+                        color: #afacac;
+                        display: inline-block;
+                        padding-left: 10px;
+                        font-style: italic;
+                    }
+                    &::before {
+                        width: 0.875rem;
+                        height: 0.875rem;
+                        border-radius: 0.125rem;
+                        border: solid thin #C6C6C7!important;
+                        top: 0.25rem;
+                    }
+                    &::after {
+                        top: 6px;
+                    }
+                }
+                .form-group input:checked+label {
+                    font-weight: 500!important;
+                    color: #0b0b0b;
+                }
+                .form-group input:checked+label::before {
+                    background-color: #0b0b0b!important;
+                    border: solid thin #0b0b0b!important;
+                }                
+            }
+        }
+        .avwr-rht {
+            width: calc(100% - 310px);
+            .avwrr-values {
+                width: 100%;
+                border: solid 1px #e0e0e0;
+                background-color: #fcfcfc;
+                margin-bottom: 36px;
+                h3 {
+                    padding: 14px 12px;
+                    width: 100%;
+                    font-size: 16px;
+                    font-weight: 600;
+                    color: #0b0b0b;
+                }
+                .table-responsive {
+                    table {
+                        tbody {
+                            tr {
+                                td {
+                                    vertical-align: middle;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .avwrr-details {
+                width: 100%;
+                border: solid 1px #e0e0e0;
+                background-color: #fcfcfc;
+                h3 {
+                    padding: 14px 12px;
+                    width: 100%;
+                    font-size: 16px;
+                    font-weight: bold;
+                    color: #0b0b0b;
+                }
+                .table-responsive {
+                    .table {
+                        tbody {
+                            tr {
+                                td {
+                                    vertical-align: middle;
+                                    .avwwr-price {
+                                        position: relative;
+                                        input {
+                                            padding-left: 25px;
+                                        }
+                                        span {
+                                            position: absolute;
+                                            left: 10px;
+                                            top: 8px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }            
+        }
+    }    
+    .attribute-select-row {
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        border: solid 1px #e0e0e0;
+        background-color: #fcfcfc;
+        padding: 23px 15px 23px 20px;
+        margin-bottom: 31px;
+        .frm-group {
+            width: 35%;
+            justify-content: space-between;
+            align-items: center;
+            gap: 17px;
+            label {
+                font-size: 12px;
+                font-weight: 500;
+                color: #181918;
+            }
+            .fg-inp {
+                width: calc(100% - 106px);
+            }
+            &.fg-attr-val {
+                width: calc(50% - 80px);
+            }
+        }
+        button {
+            width: 70px;
+        }
+    }
+}

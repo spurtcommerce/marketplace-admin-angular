@@ -1,0 +1,144 @@
+<div class="verify-header d-none">
+    <div class="verify-header-lft">
+        <!-- <h3>{{sellerinfo?.companyName}}</h3>
+        <div class="verify-header-row flex">
+            <div class="verify-header-lft-row flex">
+                <div class="title-align">
+                    <p>{{'marketplace.seller.Industry'| translate}}</p> <span>:</span> <span>
+                        {{sellerinfo?.industryName ? sellerinfo?.industryName : '-'}} </span>
+                    <p>{{'marketplace.seller.Country'| translate}}</p> <span>:</span> <span> {{country ?country:'-'}}
+                    </span>
+                    <p>{{'marketplace.seller.ReceivedOn'| translate}}</p> <span>:</span> <span>
+                        {{sellerinfo?.createdDate | dynamicDate:'dd/MM/yyyy'}} </span>
+                </div>
+            </div>
+            <div class="verify-header-lft-row flex">
+                <div class="title-align">
+                    <p>{{'marketplace.seller.FirstName'| translate}}</p> <span>:</span> <span>
+                        {{sellerinfo?.customerDetail?.firstName}} </span>
+                    <p>
+                        {{'marketplace.seller.LastName'| translate}} </p> <span>:</span> <span>
+                        {{sellerinfo?.customerDetail?.lastName ? sellerinfo?.customerDetail?.lastName : '-'}}
+                    </span>
+                    <p>
+                        {{'marketplace.seller.DOB'| translate}} </p> <span>:</span>
+                    <span> {{sellerinfo?.customerDetail?.dob ? (sellerinfo?.customerDetail?.dob |
+                        dynamicDate:'MM/dd/yyyy') : '-'}} </span>
+                </div>
+            </div>
+            <div class="verify-header-lft-row flex">
+                <div class="title-align">
+                    <p> {{'marketplace.seller.Gender'| translate}}</p> <span>:</span> <span>
+                        {{sellerinfo?.customerDetail?.gender ? sellerinfo?.customerDetail?.gender : '-'}} </span>
+                    <p>{{'marketplace.seller.Email'| translate}}</p> <span>:</span> <span>
+                        {{sellerinfo?.customerDetail?.email ? sellerinfo?.customerDetail?.email : '-'}} </span>
+                    <p>{{'marketplace.seller.Mobile'| translate}}</p> <span>:</span> <span>
+                        {{sellerinfo?.customerDetail?.mobileNumber ? sellerinfo?.customerDetail?.mobileNumber : '-'}} </span>
+                </div>
+            </div>
+        </div> -->
+    </div>
+</div>
+
+<div class="flex addproduct-wrap">
+    <div class="card ap-general">
+        <div class="ap-header sub-sub-header">
+
+
+            <h3 class="verify-reject">
+                {{'marketplace.seller.VendorDocumentList'| translate}}
+                <span *ngIf="documentStatusVerify == 1">  <img src="assets/imgs/check-green-round.svg" alt="" > Verified </span>
+                <!-- <button *ngIf="documentStatusVerify !== 1" class="button-reg btn-sm secondary" (click)="documentVerifybutton()" [disabled]="documentStatusVerify" >
+                    {{'marketplace.seller.Verified'| translate}}
+                </button> -->
+               
+            </h3>
+<!-- 
+            <h3>{{'marketplace.seller.VendorDocumentList'| translate}}</h3>
+            <div class="seller-docs-row" style="display: flex; justify-content: space-between;">
+                <p>{{'marketplace.seller.documentsInfo'| translate}} </p>
+                <button class="button-reg btn-sm secondary ms-auto" (click)="documentVerifybutton()"
+                    [disabled]=" documentStatusVerify">
+                    <img *ngIf="documentStatusVerify" src="assets/img/verify-tick.svg" alt="">
+                    <span *ngIf="documentStatusVerify==1;else verified">
+                        {{'marketplace.seller.Verified'| translate}}
+                    </span>
+                </button>
+                <ng-template #verified>
+                    {{'marketplace.seller.Verify'| translate}}
+                </ng-template>
+            </div> -->
+        </div>
+
+        <div class="ap-body">
+            <div class="product-wrap">
+                <div class="product-table">
+                    <div class="table-responsive over-visible">
+                        <!-- loader -->
+                        <div class="spinner-wrapper">
+                            <!--  -->
+                            <app-global-loader
+                                [isShow]="(Sandbox.companyVerifyListLoading$  | async)||(sandbox.documentVerifyCheckedLoading$  | async) && DocumenData?.length > 0" style="transform: translate(38%, 50%);position:absolute; z-index: 1;">
+                            </app-global-loader>
+                        </div>
+                        <!-- common table -->
+                        <div>
+                            <app-common-table *ngIf="DocumenData?.length > 0" [customTemplate]="{ab:itemTemplateRef}"
+                                [HeadArray]="custom" [GridArray]="DocumenData"
+                                (buttonChangeEvent)="buttonAction($event)">
+                            </app-common-table>
+
+                            <ng-template #itemTemplateRef let-item let-index="index">
+                                <input style="vertical-align: initial; margin-right: 3px;" type="checkbox"
+                                    [value]="item?.documentId" name="documentVerify" [id]="item.document.name"
+                                    (change)="documentVerify($event)" [checked]="item?.isVerified"
+                                    [disabled]="documentStatusVerify">{{'marketplace.seller.Verify'| translate}}
+                            </ng-template>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- No Data Found -->
+                <div class="no_data" *ngIf="DocumenData?.length == 0 && Sandbox.companyVerifyListLoaded$  | async">
+                    <div class="data-product-not-available">
+                        <img src="assets/img/empty-box.svg" alt="" />
+                        <p>{{ "marketplace.payments.DataNotFound" | translate }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="save-btns verify-save-btns flex">
+    <button class="button-reg btn-lg secondary prev" (click)="cancel()">
+        {{'marketplace.seller.Previous' | translate}}
+    </button>
+    <ng-template #iopss>
+        <button class="cancel">
+            <img style="height:30px" src="./assets/loader/Spurt-commerce-Loader-2.1.gif" />
+        </button>
+    </ng-template>
+    <button class="button-reg btn-lg notes" (click)="opencommentlog()">
+        <img src="assets/imgs/notes.svg" alt="">{{'marketplace.seller.Comments'| translate}}
+    </button>
+    <div class="dropdown" [ngClass]="{handsymbolRemove: documentStatusVerify}">
+        <button class="button-reg btn-lg  dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <ng-container *ngIf="StatusName==1;else nid">
+                Verified
+            </ng-container>
+            <ng-template #nid>
+                Pending
+            </ng-template><img src="assets/imgs/caret-down.svg" alt="">
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item"  href="javascript:void(0)" (click)="documentVerifybutton(1)">{{'marketplace.seller.Verify' | translate}}</a></li>
+          <li><a class="dropdown-item"  href="javascript:void(0)" (click)="documentVerifybutton(0)">Pending</a></li>
+        </ul>
+    </div>
+    <button class="button-reg btn-lg primary" (click)="next()">
+        {{'marketplace.seller.Next' | translate}}
+    </button>
+</div>

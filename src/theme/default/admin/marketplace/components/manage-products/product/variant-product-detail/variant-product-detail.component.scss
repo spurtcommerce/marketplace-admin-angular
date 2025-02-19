@@ -1,0 +1,329 @@
+.add-variant-wrapper {
+    padding: 0px 20px 20px;
+    .avw-header {
+        width: 100%;
+        box-shadow: 0 2px 8px 0 #00000021;
+        background-color: white;
+        padding: 13px 26px;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+        .avwh-lft {
+            justify-content: flex-start;
+            align-items: flex-start;
+            width: 60%;
+            .avwhl-img {
+                width: 59px;
+            }
+            .avwhl-content {
+                width: calc(100% - 59px);
+                h3 {
+                    margin: 0 0 7px;
+                }
+                h4 {
+                    margin: 0 0 7px;
+                }
+                p {
+                    margin: 0;
+                    span {
+                        font-weight: 500;
+                    }
+                }
+            }
+        }
+        h2 {
+            margin: 0;
+            span {
+                font-weight: 500;
+            }
+        }
+    }
+    .avw-row {
+        width: 100%;
+        justify-content: space-between;
+        .avwr-lft {
+            width: 250px;
+            // border: solid 1px #e0e0e0;
+            background-color: #fcfcfc;
+            // padding: 14px;
+            h3 {
+                font-size: 16px;
+                font-weight: bold;
+                color: #0b0b0b;
+                margin-bottom: 10px;
+            }
+            .avwrl-con {
+                padding: 13px 10px;
+                border: solid 1px #e0e0e0;
+                max-height: calc(100vh - 35.9rem);
+                overflow-y: auto;
+                border-radius: 5px;
+                .custom-control-input{
+                    accent-color: black;
+                }
+                .custom-control-label {                    
+                    padding: 3px 6px 6px 25px;
+                    span {
+                        font-weight: 400;
+                        color: #4e4e4e;
+                        display: inline-block;
+                        padding-left: 10px;
+                        font-style: italic;
+                    }
+                    &::before {
+                        width: 1.1rem !important;
+                        height: 1.1rem !important;
+                        border-radius: 3px!important;
+                        border: #d7d7d7 solid 1px !important;
+                    }
+                    &::after {
+                        top: 7px !important;
+                        left: 7px;
+                    }
+                }
+            }
+        }
+        .avwr-rht {
+            // width: calc(100% - 270px);
+            width: 100%;
+            .avwrr-values {
+                width: 100%;
+                // border: solid 1px #e0e0e0;
+                background-color: #fcfcfc;
+                margin-bottom: 20px;
+                h3 {
+                    // padding: 14px 12px;
+                    width: 100%;
+                    font-size: 16px;
+                    font-weight: bold;
+                    color: #0b0b0b;
+                }
+                .table-responsive {
+                    .table {
+                        width: 100%;
+                        margin: 0;
+                        tr {
+                            td {
+                                vertical-align: middle;
+                                input {
+                                    // width: 87px;
+                                    width: 100%;
+                                    height: 35px;
+                                    padding: 0 14px;
+                                    border-radius: 2px;
+                                    border: solid 1px #d7d7d7;                                  
+                                    background-color: white;
+                                    font-size: 13px;
+                                    font-weight: normal;
+                                    color: #000;
+                                }
+                                button {
+                                    padding: 0;
+                                    background: transparent;
+                                    border: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .avwrr-details {
+                width: 100%;
+                margin-top: 2rem;
+                h3 {
+                    padding: 5px 12px;
+                    width: 100%;
+                    font-size: 16px;
+                    font-weight: bold;
+                    color: #0b0b0b;
+                }
+                .table-responsive {
+                    .table {
+                        width: 100%;
+                        margin: 0;                        
+                        border: solid 1px #e0e0e0;
+                        tr {                            
+                            td {  
+                                vertical-align: middle;                              
+                                .avwrrd-img {
+                                    display: inline-block;
+                                    position: relative;
+                                    a {
+                                        position: absolute;
+                                        top: -10px;
+                                        right: -10px;
+                                    }
+                                }
+                                input {
+                                    width: 100%;
+                                    height: 35px;
+                                    padding: 0 5px;
+                                    border-radius: 2px;
+                                    border: solid 1px #d7d7d7;                                  
+                                    background-color: white;
+                                    font-size: 13px;
+                                    font-weight: normal;
+                                    color: #000;
+                                    &.date1 {
+                                        background-size: 14px;
+                                        background-position: right 5px center;
+                                        min-width: 85px;
+                                    }
+                                    &.sku {
+                                        width: 120px;
+                                    }
+                                    &.barcode {
+                                        width: 114px;
+                                    }
+                                    &.inventory {
+                                        width: 100%;
+                                    }
+                                }
+                                .avwwr-price {
+                                    width: 100%;
+                                    position: relative;
+                                    span {
+                                        position: absolute;
+                                        left: 1px;
+                                        top: 1px;
+                                        width: 27px;
+                                        height: 33px;
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
+                                        background-color: #f6f6f6;
+                                        font-size: 16px;
+                                        font-weight: 400;
+                                        color: #222222bf;
+                                        border-radius: 4px 0 0 4px;
+                                        border-top-left-radius: 2px;
+                                        border-bottom-left-radius: 2px;
+                                    }
+                                    input {
+                                        padding: 0 8px 0 30px;
+                                    }
+                                }
+                                button {
+                                    padding: 0;
+                                    background: transparent;
+                                    border: 0;
+                                }
+                            }
+                            &.inactive-row {
+                                td {
+                                    background-color: #f2f2f2;
+                                    color: #b2b4b8;
+                                }
+                            }
+                        }
+                    }
+                }
+            }            
+        }
+    }
+}
+
+.errorMsg{
+    color: red; 
+    display:block;
+    font-weight: 400;
+}
+
+.icon-disabled {
+    pointer-events: none;
+    opacity: 0.65 !important;
+    background: #fff !important;
+}
+::ng-deep .product-table .table .action-dropdown .dropdown-menu {
+    inset: 0px 15px auto auto !important;
+    a {
+        cursor: pointer;
+    }
+}
+
+.product-table .table tbody tr td,
+.product-table .table thead tr th {
+    padding: 13px;
+}
+
+::ng-deep .product-table .table .dropdown-menu {
+    width: auto;
+}
+
+.avwr-full{
+    display: grid;
+    grid-template-columns: 250px auto;
+    gap: 1rem;
+    .avwrr-values{
+        margin-bottom: 0px !important;
+    }
+}
+.form-group{
+    margin-bottom: 6px !important;
+}
+
+.w-10{
+    width: 10%;
+}
+
+.product-table .table thead tr th span{
+    margin-left: 3px;
+    position: relative;
+    .hide-content{
+        position: absolute;
+        background-color: #1d2334;
+        color: #ffff;
+        padding: 10px;
+        text-align: center;
+        top: 0;
+        display: none;
+        left: 4px;
+        top: 1.5rem;
+        width: 300px;
+        border-radius: 4px;
+        font-weight: 300;
+        z-index: 10;
+    }
+    &:hover{
+        .hide-content{
+            display: block;
+        }
+    }
+}
+
+.product-table .table thead tr th:nth-child(10){
+    .hide-content{
+        left: unset !important;
+        right: 0;
+    }
+}
+
+.product-table .table thead tr th:nth-child(11){
+    .hide-content{
+        left: unset !important;
+        right: 0;
+    }
+}
+.vac-btns {
+    padding: 20px 0 !important;
+}
+
+.product-table .table thead tr th .tool-btn{
+    border: 0 !important;
+    padding: 0 4px;
+    margin: 0;
+    img{
+        width: 11px;
+        height: 11px;
+    }
+}
+
+.disable {
+    pointer-events: none;
+    opacity: 0;
+}
+
+.flag {
+    background-color: #ECECF1 !important;
+    opacity: 9 !important;
+}

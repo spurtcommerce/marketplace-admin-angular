@@ -1,0 +1,45 @@
+<!-- Loader -->
+<div class="spinner-wrapper">
+    <app-global-loader [isShow]="sandbox.getFromModuleLoading | async"
+        style="transform: translate(0%, 200%);position: absolute;z-index: 1;">
+    </app-global-loader>
+</div>
+
+<!-- popup -->
+<div class="import-wrapper">
+    <div class="import-inner">
+        <div class="form-group" *ngIf="true">
+            <label>{{'dataExport.ChooseModule' | translate}} <sup>*</sup></label>
+            <ng-select 
+                [items]="modulesList" 
+                [editableSearchTerm]="true" 
+                [bindLabel]="translate" 
+                [clearable]="false" 
+                [placeholder]="'dataExport.SelectModule' | translate" 
+                [(ngModel)]="selectedModule"
+                [ngClass]="{'is-invalid': submitted && [null, undefined, ''].includes(selectedModule?.name)}">
+                <ng-template ng-label-tmp let-item="item">
+                    <div title="item">{{item.translate | translate}}</div>
+                </ng-template>
+                <ng-template ng-option-tmp let-item="item">
+                    <div title="item">{{item.translate | translate}}</div>
+                </ng-template>
+            </ng-select>
+            <div class="validation-error" *ngIf="submitted && [null, undefined, ''].includes(selectedModule?.name)">
+                {{'dataExport.required' | translate}}
+             </div>
+        </div>
+      
+        <div class="notex">
+            <p>{{'dataExport.EfficientlyExportData' | translate}}</p>
+        </div>
+    </div>
+</div>
+<div class="action-button-container flex">
+    <button class="button-reg btn-md  tertiary" [routerLink]="['/vendors/product-config/export/export-data']"> 
+        {{'dataExport.Cancel' | translate}}
+    </button>
+    <button class="button-reg btn-md  primary" (click)="getModule()"> 
+        {{'dataExport.Export' | translate}} 
+    </button>
+</div>

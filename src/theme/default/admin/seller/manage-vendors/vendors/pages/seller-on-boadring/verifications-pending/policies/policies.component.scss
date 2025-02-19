@@ -1,0 +1,56 @@
+.accordion {
+    padding-block: 2rem;
+    .card {
+        border-radius: 0.1875rem;
+        border: solid 1px #f0f0f0;
+        .card-header {
+            background-color: #f3f3f3;
+            border-radius: 0.1875rem;
+            padding-block: 0;
+            padding-inline: 1.125rem;
+            margin: 0;
+            border: 0;
+            h5 {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                height: 2.6875rem;
+                cursor: pointer;
+                padding-right: 4.1rem;
+                // background-image: url(assets/imgs/caret-up.svg);
+                background-position: right 0.0625rem center;
+                background-repeat: no-repeat;
+                &.collapsed {
+                    // background-image: url(assets/imgs/caret-down.svg);
+                }
+            }
+            .btn-link {
+                font-size: 1rem;
+                font-weight: bold;
+                color: #474747;
+                text-decoration: none;
+            }
+            .download {
+                width: 5.875rem;
+                height: 1.5625rem;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                background-color: #fff;
+                font-size: 0.75rem;
+                font-weight: normal;
+                color: #504f4f;
+                gap: 0.5rem;
+                border: 0;
+                margin-left: auto;
+            }
+        }
+        .card-body {
+            padding: 1.25rem;
+            font-size: 1rem;
+            font-weight: normal;
+            line-height: 1.75;
+            color: #111;
+        }
+    }
+}

@@ -1,0 +1,79 @@
+.new-buyer-wrapper {
+    padding: 0 0.125rem;
+    border-bottom: 1px solid #dee2e6;
+    .new-buyer-container {
+        .nav-tabs{
+            border: none;
+            padding: 0;
+        }
+        // background-color: white;
+        .new-title-back {
+            padding: 2.375rem 1.1875rem 0 0;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 0.625rem;
+            button {
+                background-color: transparent;
+                border: 0;
+            }
+            h3 {
+                font-size: 1.125rem;
+                font-weight: bold;
+                color: #222;
+            }
+        }
+        
+        .basic-details {
+            padding: 2.4375rem;
+            .basic-details-form {
+                max-width: 50.8125rem;
+                width: 100%;
+                .input-group {
+                    margin-bottom: 1.5625rem;
+                    .ig-status {
+                        .toggle {
+                            position: absolute;
+                            right: -150px;
+                            bottom: 0.875rem;
+                            display: flex;
+                            justify-content: flex-start;
+                            align-items: center;
+                            flex-wrap: nowrap;
+                            p {
+                                margin: 0;
+                                white-space: nowrap;
+                            }
+                        }
+                    }
+                }
+                .input-group-row2 {
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 0.8125rem;
+                }
+                .input-group-row2-bg {
+                    padding: 1.6875rem 1.4375rem 0.75rem;
+                    border-radius: 0.1875rem;                  
+                    background-color: rgba(246, 246, 246, 0.84);
+                    margin-bottom: 1rem;
+                }
+                .input-group-row4 {
+                    display: grid;
+                    grid-template-columns: repeat(4, 1fr);
+                    gap: 0.8125rem;
+                }
+                h4 {
+                    font-size: 0.875rem;
+                    font-weight: bold;
+                    color: #222;
+                    margin: 0.625rem 0 1rem;
+                }
+            }           
+            
+        }
+    }
+}
+.product-list-wrap {
+    padding: 0;
+ width: 100%;
+}

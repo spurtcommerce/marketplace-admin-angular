@@ -1,0 +1,150 @@
+<div class="verify-header">
+    <div class="verify-header-lft">
+        <h3>{{this.detailsData?.businessName}}</h3>
+        <div class="verify-header-lft-row flex">
+            <p>{{'MarketPlace.Industry'|translate}} :{{detailsData?.sellerIndustry?.industry}} </p>
+            <p>{{'MarketPlace.Country'|translate}} : {{countryName}}</p>
+            <p>{{'MarketPlace.Receivedon'|translate}} : {{detailsData?.sellerUser[0]?.createdDate | date: 'dd/MM/yyyy'}}
+            </p>
+        </div>
+    </div>
+    <div class="verify-header-rht">
+        <div class="verify-header-rht-col">
+            <span>{{'MarketPlace.FirstName'|translate}}</span> : {{sellerinfo?.firstName}}
+        </div>
+        <div class="verify-header-rht-col">
+            <span>{{'MarketPlace.LastName'|translate}}</span> : {{sellerinfo?.lastName}}
+        </div>
+        <div class="verify-header-rht-col">
+            <span>{{'MarketPlace.DOB'|translate}}</span> :{{sellerinfo?.dob |date:'MM/dd/yyyy'}}
+        </div>
+        <div class="verify-header-rht-col">
+            <span>{{'MarketPlace.Gender'|translate}}</span> : {{sellerinfo?.gender}}
+        </div>
+        <div class="verify-header-rht-col">
+            <span>{{'MarketPlace.Email'|translate}}</span> :{{sellerinfo?.emailId}}
+        </div>
+        <div class="verify-header-rht-col">
+            <span>{{'MarketPlace.Mobile'|translate}}</span> : {{sellerinfo?.mobileNo}}
+        </div>
+        <!-- <div class="verify-header-rht-col">
+                    <span>Password</span> <a href="javascript:void(0)"><img src="assets/imgs/lock.svg" alt=""></a>
+                </div> -->
+    </div>
+</div>
+
+<div class="verify-inner-content">
+    <div class="verify-inner-title flex" style="gap: 5px;">
+        <h3>{{'Settings.Attribute.RecordsFound'|translate}}:{{sellerCategoriesSandbox.sellerCategoryCount$ | async}}
+        </h3>
+    
+        <div class="verify-inner-title-rht flex">
+            <div class="select-per-page flex">
+                <ng-select [searchable]="false" [clearable]="false" [(ngModel)]="limit" [items]="page" bindLabel="id"
+                    bindValue="id" placeholder="10" (change)="pageSizeChange($event)">
+                </ng-select>
+                <p>{{'Settings.Attribute.Perpage'|translate}}</p>
+            </div>
+            <div class="dropdown" ngbDropdown #myDropdownSearch="ngbDropdown" id="multiple">
+                <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false" ngbDropdownToggle>
+                    <img src="assets/imgs/search-dark.svg" alt="">
+                </button>
+                <div ngbDropdownMenu class="dropdown-menu dropdown-menu-right filter-search"
+                    aria-labelledby="dropdownMenuButton">
+                    <form class="">
+                        <h4>{{'Settings.Attribute.Common.Search'|translate}}</h4>
+                        <div class="input-group">
+                            <div class="ig-row">
+                                <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="keyword"
+                                    (keyup.enter)="searchItems()" placeholder="Enter the keywords">
+                                <button type="button" (click)="clearSearch()"> <img src="assets/imgs/close.svg" alt="">
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="dropdown" ngbDropdown #myDropdown="ngbDropdown" id="multiple">
+                <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false" ngbDropdownToggle>
+                    <img src="assets/imgs/filter.svg" alt="">
+                </button>
+                <div ngbDropdownMenu class="dropdown-menu dropdown-menu-right filter-menu-dropdown"
+                    aria-labelledby="dropdownMenuButton">
+                    <form>
+                        <div>
+                            <h3>{{'Settings.Attribute.Common.Filter'|translate}}</h3>
+                        </div>
+                        <div *ngFor="let val of dynamicControls;let i=index">
+                            <app-common-form [type]="val.type" [control]="val?.control" [submitted]="submitted"
+                                [label]="val?.label" [inputId]="val?.inputId" [aliasName]="val?.aliasName"
+                                [optionalErrorMessage]="val?.optionalErrorMessage" [customData]="val?.customData"
+                                (checkboxEmit)="checkedValues($event)"></app-common-form>
+                        </div>
+                        <div class="filter">
+                            <button class="btn btn-sm btn-secondary" (click)="applyFilter()">
+                                {{'Settings.Attribute.Common.ApplyFilters'|translate}}</button>
+                            <button class="btn btn-sm btn-outline-secondary" (click)="filterReset()">
+                                {{'Settings.Attribute.Common.Reset'|translate}}</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <button class="cancel" [disabled]=" (sellerCategoriesSandbox.sellerCategoriesList$ | async).length > 0?false:true"
+            (click)="submit()"><img *ngIf="categoryStatus" src="assets/img/verify-tick.svg" alt=""><span *ngIf="categoryStatus==1;else verified">{{'MarketPlace.Verified'|translate}}</span></button>
+            <!-- <ng-template #load>
+                <button class="cancel"><img style="height:30px" src="./assets/loader/Spurt-commerce-Loader-2.1.gif" /></button>
+            </ng-template> -->
+            <ng-template #verified>
+                {{'MarketPlace.Verify'|translate}}
+            </ng-template>
+    </div>
+ 
+   
+    <div class="product-list-wrap" style="position: relative;">
+        <div class="table-responsive">
+            <div class="spinner-wrapper">
+                <app-global-loader [isShow]="(sellerCategoriesSandbox.sellerCategoriesListLoading$  | async) || (sellerCategoriesSandbox.updateSellerCategoriesLoading$  | async)"
+                    style="transform: translate(38%,50%);position:absolute; right: 50%;"></app-global-loader>
+            </div>
+            <app-common-table *ngIf="(sellerCategoriesSandbox.sellerCategoriesListLoaded$ | async) &&
+            (sellerCategoriesSandbox.sellerCategoriesList$ | async).length > 0" [HeadArray]="custom"
+                [customTemplate]="{pennding:itemTemplateRef}"
+                [GridArray]="sellerCategoriesSandbox.sellerCategoriesList$ | async"
+                (buttonChangeEvent)="buttonAction($event)">
+            </app-common-table>
+            <ng-template #itemTemplateRef let-item let-index="index">
+                <span class="tags-action tags-approved"
+                    [ngClass]="{'Approved':item.isVerified === 1,'Rejected':item.isVerified === 2, 'Pending':item.isVerified === 0}">{{item.isVerified
+                    === 1 ? "Approved" : item.isVerified === 2 ? "Rejected " : "Pending"}}</span>
+
+            </ng-template>
+
+        </div>
+
+    </div>
+
+    <div class="d-flex justify-content-end"
+        *ngIf="(sellerCategoriesSandbox.sellerCategoriesListLoaded$ | async) && (sellerCategoriesSandbox.sellerCategoriesList$ | async).length > 0">
+        <app-mat-common-paginator [currentPage]="currentPage" [pageSize]="limit" [totalItems]="sellerCategoriesSandbox.sellerCategoryCount$|async"
+            (pageChange)="onPageChange($event)"></app-mat-common-paginator>
+    </div>
+</div>
+<div class="d-flex justify-content-center" style="margin-top:180px;"
+    *ngIf="(sellerCategoriesSandbox.sellerCategoriesListLoaded$|async) && (sellerCategoriesSandbox.sellerCategoriesList$ | async).length == 0">
+    <div class="no-listings flexx">
+        <img src="assets/imgs/no-listings.svg" alt="">
+        <h5>{{'Settings.Attribute.NoListingsAvailable'|translate}}</h5>
+        <p>{{'Settings.Attribute.NoListDataDes'|translate}}</p>
+      </div>
+</div>
+<div class="save-btns verify-save-btns flex">
+    <button class="cancel prev" (click)="cancel()">{{'MarketPlace.Previous'|translate}}</button>
+
+    
+    <button class="comments" (click)="opencommentlog()"> <img src="assets/imgs/chat.svg"
+            alt="">{{'MarketPlace.Comments'|translate}}</button>
+    <button class="cancel" (click)="next()">{{'MarketPlace.Next'|translate}}</button>
+</div>
