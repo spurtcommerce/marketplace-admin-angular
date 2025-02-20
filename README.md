@@ -1,16 +1,9 @@
 <h1 align="center" style="border-bottom: none">
-    <div>
-       <a style="color:#36f" href="https://www.spurtcommerce.com/#gh-light-mode-only">
-            <img src="https://www.spurtcommerce.com/spurtcommerce.svg" width="318px" alt="Spurtcommerce logo" />
-            <br>
-           🎉 <a target="_blank" href="https://www.spurtcommerce.com/spurtcommerce-change-log" rel="dofollow"> <strong>Spurtcommerce v5.1 is now available!</strong> 
-        </a>
-    </div>
-    Opensource Multi Vendor Marketplace for B2C , B2B  <br>
+    Marketplace Admin Panel 
 </h1>
 
 <p align="center">
- Build with Nodejs + TypeScript + Angular + React + MySQL and PostgreSQL
+ A marketplace admin panel allows you to manage Sellers, products, orders, commissions, and user activities while providing insights through analytics and reports. It also enables vendor approvals, dispute resolution, and payout management to ensure smooth marketplace operations.🚀
 </p>
 
 
@@ -37,7 +30,7 @@
   </a>
 </p>
 
-![video avi](https://raw.githubusercontent.com/spurtcommerce/spurtcommerce/refs/heads/master/assets/spurt.gif)
+
 
 ![video avi](https://raw.githubusercontent.com/spurtcommerce/spurtcommerce/refs/heads/master/assets/spurt2.gif)
 
