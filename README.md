@@ -3,7 +3,7 @@
 </h1>
 
 <p align="center">
- A marketplace admin panel allows you to manage Sellers, products, orders, commissions,CMS and user activities while providing insights through analytics and reports. It also enables vendor approvals, dispute resolution, and payout management to ensure smooth marketplace operations.🚀
+ A marketplace admin panel allows you to manage Sellers, products, orders, commissions,cms and user activities while providing insights through analytics and reports. It also enables vendor approvals, dispute resolution, and payout management to ensure smooth marketplace operations.🚀
 </p>
 
 
