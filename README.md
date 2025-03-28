@@ -1,9 +1,16 @@
 <h1 align="center" style="border-bottom: none">
-    Marketplace Admin Panel 
+    <div>
+       <a style="color:#36f" href="https://www.spurtcommerce.com/#gh-light-mode-only">
+            <img src="https://www.spurtcommerce.com/spurtcommerce.svg" width="318px" alt="Spurtcommerce logo" />
+            <br>
+           🎉 <a target="_blank" href="https://www.spurtcommerce.com/spurtcommerce-change-log" rel="dofollow"> <strong>Spurtcommerce v5.1 is now available!</strong> 
+        </a>
+    </div>
+    Opensource Multi Vendor Marketplace for B2C , B2B  <br>
 </h1>
 
 <p align="center">
- A marketplace admin panel allows you to manage Sellers, products, orders, commissions,cms and user activities while providing insights through analytics and reports. It also enables vendor approvals, dispute resolution, and payout management to ensure smooth marketplace operations.🚀
+ Build with Nodejs + TypeScript + Angular + React + MySQL and PostgreSQL
 </p>
 
 
@@ -30,46 +37,85 @@
   </a>
 </p>
 
-
-
 ![video avi](https://raw.githubusercontent.com/spurtcommerce/spurtcommerce/refs/heads/master/assets/spurt2.gif)
 
 
-
-
-
 <br />
-## ❯  🚀 Deploy Frontend Admin  (Angular)
 
+## ❯  🚀 Set up Frontend Admin (Angular)
+
+If you want to create a local repository so that you can use tools such as Git...
+
+## ❯ Prerequisites
+
+ Node.js - v^18.20 or newer
+
+ Angular version - v^17 
 
 ### Step 1:
 
-Navigate to "/var/www/html" (assuming Apache installation has created this directory) from your home directory in your local or server
+*To clone the Admin folder to your local using below command.
+```
+ git clone  https://github.com/spurtcommerce/marketplace-admin-angular
+```
 
-### Step 2:
+### Step 2: (Optional)
 
-*  Copy the "admin" folders as-is directly from "dist/" to "/var/www/html/".
+*If you using below Node.js version 18.20 Using below command:
 
+```
+    nvm use 18.20
+```
+### Step 3:
+*  Install the necessary packages on your local by running:
+```
+  npm install
+```
+### Step 4:
+* To edit environment file in your local for environment file setup.
+   
+    File name : environment.ts
+    
+Example : 
+baseUrl: '<'Your api_base_url'>', // eg:'https://your-web-site.com/api'
 
-Completion of above steps should successfully setup frontend builds of Admin panels of Spurtcommerce Marketplace solution such as Admin Panel.
+ImageUrl: '<'Your API url for image resize'>',   //eg:'https://your-web-site.com-image/'
 
-* Admin panel be accessed by http://{your-domian or IP}:{your-port}/admin/#/auth/login
+### Step 5:
+* Ensure that all of the above steps are successfully implemented. After that, run the code with the following command:
+```
+ npm run large-serve 
+```
+   To view it in your browser, go to : http://localhost:4200/#/auth/login 
+
+### step 6:
+* If you want to create a build, set up the environment.prod.ts file, and then execute the following command to generate the build:
+```
+ npm run large-build
+```
+Once successfully executed, a build file will be created in the dist folder
+
+* Following these steps will successfully install and set up the Spurtcommerce Marketplace solution on your local machine (or server).
+
+The Admin Panel can be accessed at:
+
+*  http://{your-domian or IP}/admin/#/auth/login 
+
+Upon completion of the above steps, the build of the admin panel should be successfully set up.
 
 ## Default Admin Panel Login Details
 
-<br />
-Username : "marketplace@spurtcart.com" 
-<br />
-Password : "Piccosoft2012"
+Username : "marketplace@spurtcart.com"
 
-Above steps concludes successful installation and setup of Spurtcommerce Marketplace solution build in your local (or) server.
+Password : "Marketplace123$@!"
 
 ## 🤔 Support , Document and Help
+
+Spurtcommerce 5.1.0 is published to npm under the `@spurtcommerce/*` namespace.
 
 You can find our extended documentation on our [www.spurtcommerce.dev](https://www.spurtcommerce.dev), but some quick links that might be helpful:
 
 - Read [Technology](https://www.spurtcommerce.com/opensource-ecommerce-multivendor-nodejs-react-angular) to learn about our vision and what's in the box.
-
 - Our [Discard](https://discord.com/invite/hyW4MXXn8n) Questions, Live Discussions [Spurtcommerce Support](https://accounts.spurtcommerce.com/#/auth/login-client).
 - Some [Video](https://www.youtube.com/@Spurtcommerce/videos) Video Tutorials 
 - Every [Release](https://github.com/spurtcommerce/multivendor-marketplace/releases) is documented on the Github Releases page.
@@ -87,3 +133,4 @@ Spurtcommerce is developed and maintain by [Piccosoft Software Labs India (P) Li
 ## ❯ License
 
 Spurtcommerce is released under the [BSD-3-Clause License.](https://github.com/spurtcommerce/spurtcommerce/blob/master/LICENSE).
+
